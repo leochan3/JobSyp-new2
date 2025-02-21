@@ -11,10 +11,9 @@ import json
 import math
 import re
 import time
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from typing import Optional, Tuple, Any
-
-from concurrent.futures import ThreadPoolExecutor
 
 from bs4 import BeautifulSoup
 
@@ -37,7 +36,7 @@ from ...jobs import (
     DescriptionFormat,
 )
 
-logger = create_logger("ZipRecruiter")
+log = create_logger("ZipRecruiter")
 
 
 class ZipRecruiterScraper(Scraper):
@@ -77,7 +76,7 @@ class ZipRecruiterScraper(Scraper):
                 break
             if page > 1:
                 time.sleep(self.delay)
-            logger.info(f"search page: {page} / {max_pages}")
+            log.info(f"search page: {page} / {max_pages}")
             jobs_on_page, continue_token = self._find_jobs_in_page(
                 scraper_input, continue_token
             )
@@ -110,13 +109,13 @@ class ZipRecruiterScraper(Scraper):
                 else:
                     err = f"ZipRecruiter response status code {res.status_code}"
                     err += f" with response: {res.text}"  # ZipRecruiter likely not available in EU
-                logger.error(err)
+                log.error(err)
                 return jobs_list, ""
         except Exception as e:
             if "Proxy responded with" in str(e):
-                logger.error(f"Indeed: Bad proxy")
+                log.error(f"Indeed: Bad proxy")
             else:
-                logger.error(f"Indeed: {str(e)}")
+                log.error(f"Indeed: {str(e)}")
             return jobs_list, ""
 
         res_data = res.json()
@@ -215,7 +214,28 @@ class ZipRecruiterScraper(Scraper):
         return description_full, job_url_direct
 
     def _get_cookies(self):
-        data = "event_type=session&logged_in=false&number_of_retry=1&property=model%3AiPhone&property=os%3AiOS&property=locale%3Aen_us&property=app_build_number%3A4734&property=app_version%3A91.0&property=manufacturer%3AApple&property=timestamp%3A2024-01-12T12%3A04%3A42-06%3A00&property=screen_height%3A852&property=os_version%3A16.6.1&property=source%3Ainstall&property=screen_width%3A393&property=device_model%3AiPhone%2014%20Pro&property=brand%3AApple"
+        """
+        Sends a session event to the API with device properties.
+        """
+        data = [
+            ("event_type", "session"),
+            ("logged_in", "false"),
+            ("number_of_retry", "1"),
+            ("property", "model:iPhone"),
+            ("property", "os:iOS"),
+            ("property", "locale:en_us"),
+            ("property", "app_build_number:4734"),
+            ("property", "app_version:91.0"),
+            ("property", "manufacturer:Apple"),
+            ("property", "timestamp:2025-01-12T12:04:42-06:00"),
+            ("property", "screen_height:852"),
+            ("property", "os_version:16.6.1"),
+            ("property", "source:install"),
+            ("property", "screen_width:393"),
+            ("property", "device_model:iPhone 14 Pro"),
+            ("property", "brand:Apple"),
+        ]
+
         url = f"{self.api_url}/jobs-app/event"
         self.session.post(url, data=data)
 

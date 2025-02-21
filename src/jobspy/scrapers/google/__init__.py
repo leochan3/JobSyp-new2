@@ -26,7 +26,7 @@ from ...jobs import (
     JobType,
 )
 
-logger = create_logger("Google")
+log = create_logger("Google")
 
 
 class GoogleJobsScraper(Scraper):
@@ -61,7 +61,7 @@ class GoogleJobsScraper(Scraper):
         )
         forward_cursor, job_list = self._get_initial_cursor_and_jobs()
         if forward_cursor is None:
-            logger.warning(
+            log.warning(
                 "initial cursor not found, try changing your query or there was at most 10 results"
             )
             return JobResponse(jobs=job_list)
@@ -72,16 +72,16 @@ class GoogleJobsScraper(Scraper):
             len(self.seen_urls) < scraper_input.results_wanted + scraper_input.offset
             and forward_cursor
         ):
-            logger.info(
+            log.info(
                 f"search page: {page} / {math.ceil(scraper_input.results_wanted / self.jobs_per_page)}"
             )
             try:
                 jobs, forward_cursor = self._get_jobs_next_page(forward_cursor)
             except Exception as e:
-                logger.error(f"failed to get jobs on page: {page}, {e}")
+                log.error(f"failed to get jobs on page: {page}, {e}")
                 break
             if not jobs:
-                logger.info(f"found no jobs on page: {page}")
+                log.info(f"found no jobs on page: {page}")
                 break
             job_list += jobs
             page += 1
@@ -230,10 +230,7 @@ class GoogleJobsScraper(Scraper):
 
     @staticmethod
     def _find_job_info_initial_page(html_text: str):
-        pattern = (
-            f'520084652":('
-            + r"\[.*?\]\s*])\s*}\s*]\s*]\s*]\s*]\s*]"
-        )
+        pattern = f'520084652":(' + r"\[.*?\]\s*])\s*}\s*]\s*]\s*]\s*]\s*]"
         results = []
         matches = re.finditer(pattern, html_text)
 
@@ -245,6 +242,6 @@ class GoogleJobsScraper(Scraper):
                 results.append(parsed_data)
 
             except json.JSONDecodeError as e:
-                logger.error(f"Failed to parse match: {str(e)}")
+                log.error(f"Failed to parse match: {str(e)}")
                 results.append({"raw_match": match.group(0), "error": str(e)})
         return results

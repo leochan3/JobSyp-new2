@@ -1,19 +1,22 @@
+"""
+jobspy.scrapers.bayt
+~~~~~~~~~~~~~~~~~~~
+
+This module contains routines to scrape Bayt.
+"""
+
 from __future__ import annotations
 
-import time
 import random
-from typing import Optional
+import time
 
-import requests
 from bs4 import BeautifulSoup
 
 from .. import Scraper, ScraperInput, Site
-from ..exceptions import BaytException
+from ..utils import create_logger, create_session
 from ...jobs import JobPost, JobResponse, Location, Country
-from ..utils import create_logger
 
-logger = create_logger("Bayt")
-logger.setLevel("DEBUG")  # Ensure DEBUG messages are output
+log = create_logger("Bayt")
 
 
 class BaytScraper(Scraper):
@@ -26,10 +29,14 @@ class BaytScraper(Scraper):
     ):
         super().__init__(Site.BAYT, proxies=proxies, ca_cert=ca_cert)
         self.scraper_input = None
+        self.session = None
         self.country = "worldwide"
 
     def scrape(self, scraper_input: ScraperInput) -> JobResponse:
         self.scraper_input = scraper_input
+        self.session = create_session(
+            proxies=self.proxies, ca_cert=self.ca_cert, is_tls=False, has_retry=True
+        )
         job_list: list[JobPost] = []
         page = 1
         results_wanted = (
@@ -37,13 +44,15 @@ class BaytScraper(Scraper):
         )
 
         while len(job_list) < results_wanted:
-            logger.info(f"Fetching Bayt jobs page {page}")
+            log.info(f"Fetching Bayt jobs page {page}")
             job_elements = self._fetch_jobs(self.scraper_input.search_term, page)
             if not job_elements:
                 break
 
             if job_elements:
-                logger.debug("First job element snippet:\n" + job_elements[0].prettify()[:500])
+                log.debug(
+                    "First job element snippet:\n" + job_elements[0].prettify()[:500]
+                )
 
             initial_count = len(job_list)
             for job in job_elements:
@@ -54,16 +63,16 @@ class BaytScraper(Scraper):
                         if len(job_list) >= results_wanted:
                             break
                     else:
-                        logger.debug(
+                        log.debug(
                             "Extraction returned None. Job snippet:\n"
                             + job.prettify()[:500]
                         )
                 except Exception as e:
-                    logger.error(f"Bayt: Error extracting job info: {str(e)}")
+                    log.error(f"Bayt: Error extracting job info: {str(e)}")
                     continue
 
             if len(job_list) == initial_count:
-                logger.info(f"No new jobs found on page {page}. Ending pagination.")
+                log.info(f"No new jobs found on page {page}. Ending pagination.")
                 break
 
             page += 1
@@ -72,45 +81,35 @@ class BaytScraper(Scraper):
         job_list = job_list[: scraper_input.results_wanted]
         return JobResponse(jobs=job_list)
 
-    def _fetch_jobs(self, query: str, page: int = 1) -> Optional[list]:
+    def _fetch_jobs(self, query: str, page: int) -> list | None:
         """
         Grabs the job results for the given query and page number.
         """
         try:
-            # Updated URL to include the "international" segment as per the original code.
             url = f"{self.base_url}/en/international/jobs/{query}-jobs/?page={page}"
-            logger.info(f"Constructed URL: {url}")
-            headers = {
-                "User-Agent": (
-                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                    "AppleWebKit/537.36 (KHTML, like Gecko) "
-                    "Chrome/115.0.0.0 Safari/537.36"
-                )
-            }
-            response = requests.get(url, headers=headers, timeout=10)
+            response = self.session.get(url)
             response.raise_for_status()
             soup = BeautifulSoup(response.text, "html.parser")
-            # Use the attribute selector as in the original code.
             job_listings = soup.find_all("li", attrs={"data-js-job": ""})
-            logger.info(f"Found {len(job_listings)} job listing elements")
+            log.debug(f"Found {len(job_listings)} job listing elements")
             return job_listings
         except Exception as e:
-            logger.error(f"Bayt: Error fetching jobs - {str(e)}")
+            log.error(f"Bayt: Error fetching jobs - {str(e)}")
             return None
 
-    def _extract_job_info(self, job: BeautifulSoup) -> Optional[JobPost]:
+    def _extract_job_info(self, job: BeautifulSoup) -> JobPost | None:
         """
         Extracts the job information from a single job listing.
         """
         # Find the h2 element holding the title and link (no class filtering)
         job_general_information = job.find("h2")
         if not job_general_information:
-            return None
+            return
 
         job_title = job_general_information.get_text(strip=True)
         job_url = self._extract_job_url(job_general_information)
         if not job_url:
-            return None
+            return
 
         # Extract company name using the original approach:
         company_tag = job.find("div", class_="t-nowrap p10l")
@@ -129,31 +128,18 @@ class BaytScraper(Scraper):
             city=location,
             country=Country.from_string(self.country),
         )
-
         return JobPost(
             id=job_id,
             title=job_title,
             company_name=company_name,
-            company_url="",
             location=location_obj,
-            date_posted=None,
             job_url=job_url,
-            compensation=None,
-            job_type=None,
-            job_level=None,
-            company_industry=None,
-            description=None,
-            job_url_direct=None,
-            emails=[],
-            company_logo=None,
-            job_function=None,
         )
 
-    def _extract_job_url(self, job_general_information: BeautifulSoup) -> Optional[str]:
+    def _extract_job_url(self, job_general_information: BeautifulSoup) -> str | None:
         """
         Pulls the job URL from the 'a' within the h2 element.
         """
         a_tag = job_general_information.find("a")
         if a_tag and a_tag.has_attr("href"):
             return self.base_url + a_tag["href"].strip()
-        return None

@@ -30,7 +30,7 @@ from ...jobs import (
     DescriptionFormat,
 )
 
-logger = create_logger("Indeed")
+log = create_logger("Indeed")
 
 
 class IndeedScraper(Scraper):
@@ -71,12 +71,12 @@ class IndeedScraper(Scraper):
         cursor = None
 
         while len(self.seen_urls) < scraper_input.results_wanted + scraper_input.offset:
-            logger.info(
+            log.info(
                 f"search page: {page} / {math.ceil(scraper_input.results_wanted / self.jobs_per_page)}"
             )
             jobs, cursor = self._scrape_page(cursor)
             if not jobs:
-                logger.info(f"found no jobs on page: {page}")
+                log.info(f"found no jobs on page: {page}")
                 break
             job_list += jobs
             page += 1
@@ -122,9 +122,10 @@ class IndeedScraper(Scraper):
             headers=api_headers_temp,
             json=payload,
             timeout=10,
+            verify=False,
         )
         if not response.ok:
-            logger.info(
+            log.info(
                 f"responded with status code: {response.status_code} (submit GitHub issue if this appears to be a bug)"
             )
             return jobs, new_cursor
