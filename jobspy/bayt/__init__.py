@@ -1,10 +1,3 @@
-"""
-jobspy.scrapers.bayt
-~~~~~~~~~~~~~~~~~~~
-
-This module contains routines to scrape Bayt.
-"""
-
 from __future__ import annotations
 
 import random
@@ -12,9 +5,16 @@ import time
 
 from bs4 import BeautifulSoup
 
-from .. import Scraper, ScraperInput, Site
-from ..utils import create_logger, create_session
-from ...jobs import JobPost, JobResponse, Location, Country
+from jobspy.model import (
+    Scraper,
+    ScraperInput,
+    Site,
+    JobPost,
+    JobResponse,
+    Location,
+    Country,
+)
+from jobspy.util import create_logger, create_session
 
 log = create_logger("Bayt")
 

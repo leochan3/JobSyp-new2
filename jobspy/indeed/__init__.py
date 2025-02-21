@@ -1,39 +1,32 @@
-"""
-jobspy.scrapers.indeed
-~~~~~~~~~~~~~~~~~~~
-
-This module contains routines to scrape Indeed.
-"""
-
 from __future__ import annotations
 
 import math
-from typing import Tuple
 from datetime import datetime
+from typing import Tuple
 
-from .constants import job_search_query, api_headers
-from .. import Scraper, ScraperInput, Site
-from ..utils import (
-    extract_emails_from_text,
-    get_enum_from_job_type,
-    markdown_converter,
-    create_session,
-    create_logger,
-)
-from ...jobs import (
+from jobspy.indeed.constant import job_search_query, api_headers
+from jobspy.indeed.util import is_job_remote, get_compensation, get_job_type
+from jobspy.model import (
+    Scraper,
+    ScraperInput,
+    Site,
     JobPost,
-    Compensation,
-    CompensationInterval,
     Location,
     JobResponse,
     JobType,
     DescriptionFormat,
 )
+from jobspy.util import (
+    extract_emails_from_text,
+    markdown_converter,
+    create_session,
+    create_logger,
+)
 
 log = create_logger("Indeed")
 
 
-class IndeedScraper(Scraper):
+class Indeed(Scraper):
     def __init__(
         self, proxies: list[str] | str | None = None, ca_cert: str | None = None
     ):
@@ -213,7 +206,7 @@ class IndeedScraper(Scraper):
         if self.scraper_input.description_format == DescriptionFormat.MARKDOWN:
             description = markdown_converter(description)
 
-        job_type = self._get_job_type(job["attributes"])
+        job_type = get_job_type(job["attributes"])
         timestamp_seconds = job["datePublished"] / 1000
         date_posted = datetime.fromtimestamp(timestamp_seconds).strftime("%Y-%m-%d")
         employer = job["employer"].get("dossier") if job["employer"] else None
@@ -234,14 +227,14 @@ class IndeedScraper(Scraper):
                 country=job.get("location", {}).get("countryCode"),
             ),
             job_type=job_type,
-            compensation=self._get_compensation(job["compensation"]),
+            compensation=get_compensation(job["compensation"]),
             date_posted=date_posted,
             job_url=job_url,
             job_url_direct=(
                 job["recruit"].get("viewJobUrl") if job.get("recruit") else None
             ),
             emails=extract_emails_from_text(description) if description else None,
-            is_remote=self._is_job_remote(job, description),
+            is_remote=is_job_remote(job, description),
             company_addresses=(
                 employer_details["addresses"][0]
                 if employer_details.get("addresses")
@@ -265,86 +258,3 @@ class IndeedScraper(Scraper):
                 else None
             ),
         )
-
-    @staticmethod
-    def _get_job_type(attributes: list) -> list[JobType]:
-        """
-        Parses the attributes to get list of job types
-        :param attributes:
-        :return: list of JobType
-        """
-        job_types: list[JobType] = []
-        for attribute in attributes:
-            job_type_str = attribute["label"].replace("-", "").replace(" ", "").lower()
-            job_type = get_enum_from_job_type(job_type_str)
-            if job_type:
-                job_types.append(job_type)
-        return job_types
-
-    @staticmethod
-    def _get_compensation(compensation: dict) -> Compensation | None:
-        """
-        Parses the job to get compensation
-        :param job:
-        :return: compensation object
-        """
-        if not compensation["baseSalary"] and not compensation["estimated"]:
-            return None
-        comp = (
-            compensation["baseSalary"]
-            if compensation["baseSalary"]
-            else compensation["estimated"]["baseSalary"]
-        )
-        if not comp:
-            return None
-        interval = IndeedScraper._get_compensation_interval(comp["unitOfWork"])
-        if not interval:
-            return None
-        min_range = comp["range"].get("min")
-        max_range = comp["range"].get("max")
-        return Compensation(
-            interval=interval,
-            min_amount=int(min_range) if min_range is not None else None,
-            max_amount=int(max_range) if max_range is not None else None,
-            currency=(
-                compensation["estimated"]["currencyCode"]
-                if compensation["estimated"]
-                else compensation["currencyCode"]
-            ),
-        )
-
-    @staticmethod
-    def _is_job_remote(job: dict, description: str) -> bool:
-        """
-        Searches the description, location, and attributes to check if job is remote
-        """
-        remote_keywords = ["remote", "work from home", "wfh"]
-        is_remote_in_attributes = any(
-            any(keyword in attr["label"].lower() for keyword in remote_keywords)
-            for attr in job["attributes"]
-        )
-        is_remote_in_description = any(
-            keyword in description.lower() for keyword in remote_keywords
-        )
-        is_remote_in_location = any(
-            keyword in job["location"]["formatted"]["long"].lower()
-            for keyword in remote_keywords
-        )
-        return (
-            is_remote_in_attributes or is_remote_in_description or is_remote_in_location
-        )
-
-    @staticmethod
-    def _get_compensation_interval(interval: str) -> CompensationInterval:
-        interval_mapping = {
-            "DAY": "DAILY",
-            "YEAR": "YEARLY",
-            "HOUR": "HOURLY",
-            "WEEK": "WEEKLY",
-            "MONTH": "MONTHLY",
-        }
-        mapped_interval = interval_mapping.get(interval.upper(), None)
-        if mapped_interval and mapped_interval in CompensationInterval.__members__:
-            return CompensationInterval[mapped_interval]
-        else:
-            raise ValueError(f"Unsupported interval: {interval}")

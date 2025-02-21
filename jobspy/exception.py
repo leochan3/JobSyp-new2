@@ -1,5 +1,5 @@
 """
-jobspy.scrapers.exceptions
+jobspy.jobboard.exceptions
 ~~~~~~~~~~~~~~~~~~~
 
 This module contains the set of Scrapers' exceptions.
