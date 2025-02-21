@@ -42,7 +42,7 @@ def scrape_jobs(
     offset: int | None = 0,
     hours_old: int = None,
     enforce_annual_salary: bool = False,
-    verbose: int = 2,
+    verbose: int = 0,
     **kwargs,
 ) -> pd.DataFrame:
     """

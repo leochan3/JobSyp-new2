@@ -1,16 +1,19 @@
 from __future__ import annotations
 
-import re
 import logging
+import re
 from itertools import cycle
 
+import numpy as np
 import requests
 import tls_client
-import numpy as np
+import urllib3
 from markdownify import markdownify as md
 from requests.adapters import HTTPAdapter, Retry
 
 from ..jobs import CompensationInterval, JobType
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
 def create_logger(name: str):
@@ -129,7 +132,7 @@ def create_session(
     return session
 
 
-def set_logger_level(verbose: int = 2):
+def set_logger_level(verbose: int):
     """
     Adjusts the logger's level. This function allows the logging level to be changed at runtime.
 

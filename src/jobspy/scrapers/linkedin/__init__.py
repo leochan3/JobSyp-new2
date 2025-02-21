@@ -38,7 +38,7 @@ from ..utils import (
     markdown_converter,
 )
 
-logger = create_logger("LinkedIn")
+log = create_logger("LinkedIn")
 
 
 class LinkedInScraper(Scraper):
@@ -86,7 +86,7 @@ class LinkedInScraper(Scraper):
         )
         while continue_search():
             request_count += 1
-            logger.info(
+            log.info(
                 f"search page: {request_count} / {math.ceil(scraper_input.results_wanted / 10)}"
             )
             params = {
@@ -126,13 +126,13 @@ class LinkedInScraper(Scraper):
                     else:
                         err = f"LinkedIn response status code {response.status_code}"
                         err += f" - {response.text}"
-                    logger.error(err)
+                    log.error(err)
                     return JobResponse(jobs=job_list)
             except Exception as e:
                 if "Proxy responded with" in str(e):
-                    logger.error(f"LinkedIn: Bad proxy")
+                    log.error(f"LinkedIn: Bad proxy")
                 else:
-                    logger.error(f"LinkedIn: {str(e)}")
+                    log.error(f"LinkedIn: {str(e)}")
                 return JobResponse(jobs=job_list)
 
             soup = BeautifulSoup(response.text, "html.parser")
