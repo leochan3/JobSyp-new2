@@ -77,7 +77,8 @@ class BaytScraper(Scraper):
         Grabs the job results for the given query and page number.
         """
         try:
-            url = f"{self.base_url}/en/jobs/{query}-jobs/?page={page}"
+            # Updated URL to include the "international" segment as per the original code.
+            url = f"{self.base_url}/en/international/jobs/{query}-jobs/?page={page}"
             logger.info(f"Constructed URL: {url}")
             headers = {
                 "User-Agent": (
@@ -89,7 +90,8 @@ class BaytScraper(Scraper):
             response = requests.get(url, headers=headers, timeout=10)
             response.raise_for_status()
             soup = BeautifulSoup(response.text, "html.parser")
-            job_listings = soup.find_all("li", class_="has-pointer-d")
+            # Use the attribute selector as in the original code.
+            job_listings = soup.find_all("li", attrs={"data-js-job": ""})
             logger.info(f"Found {len(job_listings)} job listing elements")
             return job_listings
         except Exception as e:
@@ -98,28 +100,30 @@ class BaytScraper(Scraper):
 
     def _extract_job_info(self, job: BeautifulSoup) -> Optional[JobPost]:
         """
-        Extracts the job information from a single job listing,
-        mirroring your original code's logic for company and location.
+        Extracts the job information from a single job listing.
         """
-        # The h2 with class jb-title holds the title and link
-        job_general_information = job.find("h2", class_="jb-title")
+        # Find the h2 element holding the title and link (no class filtering)
+        job_general_information = job.find("h2")
         if not job_general_information:
             return None
 
-        job_title = job_general_information.text.strip()
+        job_title = job_general_information.get_text(strip=True)
         job_url = self._extract_job_url(job_general_information)
         if not job_url:
             return None
 
-        # --- Company Name (original approach) ---
-        company_tag = job.find("b", class_="jb-company")
-        company_name = company_tag.text.strip() if company_tag else None
+        # Extract company name using the original approach:
+        company_tag = job.find("div", class_="t-nowrap p10l")
+        company_name = (
+            company_tag.find("span").get_text(strip=True)
+            if company_tag and company_tag.find("span")
+            else None
+        )
 
-        # --- Location (original approach) ---
-        location_tag = job.find("span", class_="jb-loc")
-        location = location_tag.text.strip() if location_tag else None
+        # Extract location using the original approach:
+        location_tag = job.find("div", class_="t-mute t-small")
+        location = location_tag.get_text(strip=True) if location_tag else None
 
-        # Build our JobPost object
         job_id = f"bayt-{abs(hash(job_url))}"
         location_obj = Location(
             city=location,
@@ -147,7 +151,7 @@ class BaytScraper(Scraper):
 
     def _extract_job_url(self, job_general_information: BeautifulSoup) -> Optional[str]:
         """
-        Pulls the job URL from the 'a' within h2.jb-title.
+        Pulls the job URL from the 'a' within the h2 element.
         """
         a_tag = job_general_information.find("a")
         if a_tag and a_tag.has_attr("href"):
