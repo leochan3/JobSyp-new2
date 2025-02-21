@@ -1,10 +1,10 @@
 <img src="https://github.com/cullenwatson/JobSpy/assets/78247585/ae185b7e-e444-4712-8bb9-fa97f53e896b" width="400">
 
-**JobSpy** is a simple, yet comprehensive, job scraping library.
+**JobSpy** is a job scraping library with the goal of aggregating all the jobs from popular job boards with one tool.
 
 ## Features
 
-- Scrapes job postings from **LinkedIn**, **Indeed**, **Glassdoor**, **Google**, & **ZipRecruiter** simultaneously
+- Scrapes job postings from **LinkedIn**, **Indeed**, **Glassdoor**, **Google**, **ZipRecruiter**, & **Bayt** concurrently
 - Aggregates the job postings in a dataframe
 - Proxies support to bypass blocking
 
@@ -25,7 +25,7 @@ import csv
 from jobspy import scrape_jobs
 
 jobs = scrape_jobs(
-    site_name=["indeed", "linkedin", "zip_recruiter", "glassdoor", "google"],
+    site_name=["indeed", "linkedin", "zip_recruiter", "glassdoor", "google", "bayt"],
     search_term="software engineer",
     google_search_term="software engineer jobs near San Francisco, CA since yesterday",
     location="San Francisco, CA",
@@ -58,7 +58,7 @@ zip_recruiter Software Developer                 TEKsystems        Phoenix      
 ```plaintext
 Optional
 ├── site_name (list|str): 
-|    linkedin, zip_recruiter, indeed, glassdoor, google
+|    linkedin, zip_recruiter, indeed, glassdoor, google, bayt
 |    (default is all)
 │
 ├── search_term (str)
@@ -164,6 +164,11 @@ You can specify the following countries when searching on Indeed (use the exact 
 | Taiwan               | Thailand     | Turkey     | Ukraine        |
 | United Arab Emirates | UK*          | USA*       | Uruguay        |
 | Venezuela            | Vietnam*     |            |                |
+
+### **Bayt**
+
+Bayt only uses the search_term parameter currently and searches internationally
+
 
 
 ## Notes
