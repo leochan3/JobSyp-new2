@@ -18,6 +18,7 @@ class Site(Enum):
     ZIP_RECRUITER = "zip_recruiter"
     GLASSDOOR = "glassdoor"
     GOOGLE = "google"
+    BAYT = "bayt"
 
 
 class SalarySource(Enum):

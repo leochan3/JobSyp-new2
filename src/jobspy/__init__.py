@@ -11,6 +11,7 @@ from .scrapers.ziprecruiter import ZipRecruiterScraper
 from .scrapers.glassdoor import GlassdoorScraper
 from .scrapers.google import GoogleJobsScraper
 from .scrapers.linkedin import LinkedInScraper
+from .scrapers.bayt import BaytScraper
 from .scrapers import SalarySource, ScraperInput, Site, JobResponse, Country
 from .scrapers.exceptions import (
     LinkedInException,
@@ -54,6 +55,7 @@ def scrape_jobs(
         Site.ZIP_RECRUITER: ZipRecruiterScraper,
         Site.GLASSDOOR: GlassdoorScraper,
         Site.GOOGLE: GoogleJobsScraper,
+        Site.BAYT: BaytScraper,
     }
     set_logger_level(verbose)
 
