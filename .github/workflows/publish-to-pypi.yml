@@ -1,5 +1,9 @@
 name: Publish JobSpy to PyPi
-on: push
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   build-n-publish:
