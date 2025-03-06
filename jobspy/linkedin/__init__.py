@@ -14,10 +14,11 @@ from bs4.element import Tag
 from jobspy.exception import LinkedInException
 from jobspy.linkedin.constant import headers
 from jobspy.linkedin.util import (
+    is_job_remote,
     job_type_code,
     parse_job_type,
     parse_job_level,
-    parse_company_industry,
+    parse_company_industry
 )
 from jobspy.model import (
     JobPost,
@@ -173,7 +174,7 @@ class LinkedIn(Scraper):
     ) -> Optional[JobPost]:
         salary_tag = job_card.find("span", class_="job-search-card__salary-info")
 
-        compensation = None
+        compensation = description = None
         if salary_tag:
             salary_text = salary_tag.get_text(separator=" ").strip()
             salary_values = [currency_parser(value) for value in salary_text.split("-")]
@@ -217,6 +218,8 @@ class LinkedIn(Scraper):
         job_details = {}
         if full_descr:
             job_details = self._get_job_details(job_id)
+            description = job_details.get("description")
+        is_remote = is_job_remote(title, description, location)
 
         return JobPost(
             id=f"li-{job_id}",
@@ -224,6 +227,7 @@ class LinkedIn(Scraper):
             company_name=company,
             company_url=company_url,
             location=location,
+            is_remote=is_remote,
             date_posted=date_posted,
             job_url=f"{self.base_url}/jobs/view/{job_id}",
             compensation=compensation,
@@ -232,7 +236,7 @@ class LinkedIn(Scraper):
             company_industry=job_details.get("company_industry"),
             description=job_details.get("description"),
             job_url_direct=job_details.get("job_url_direct"),
-            emails=extract_emails_from_text(job_details.get("description")),
+            emails=extract_emails_from_text(description),
             company_logo=job_details.get("company_logo"),
             job_function=job_details.get("job_function"),
         )

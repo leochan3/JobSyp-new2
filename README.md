@@ -220,6 +220,7 @@ JobPost
 │   ├── country
 │   ├── city
 │   ├── state
+├── is_remote
 ├── description
 ├── job_type: fulltime, parttime, internship, contract
 ├── job_function
@@ -229,8 +230,7 @@ JobPost
 │   ├── currency
 │   └── salary_source: direct_data, description (parsed from posting)
 ├── date_posted
-├── emails
-└── is_remote
+└── emails
 
 Linkedin specific
 └── job_level

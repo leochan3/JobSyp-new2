@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 
-from jobspy.model import JobType
+from jobspy.model import JobType, Location
 from jobspy.util import get_enum_from_job_type
 
 
@@ -83,3 +83,14 @@ def parse_company_industry(soup_industry: BeautifulSoup) -> str | None:
             industry = industry_span.get_text(strip=True)
 
     return industry
+
+
+def is_job_remote(title: dict, description: str, location: Location) -> bool:
+    """
+    Searches the title, location, and description to check if job is remote
+    """
+    remote_keywords = ["remote", "work from home", "wfh"]
+    location = location.display_location()
+    full_string = f'{title} {description} {location}'.lower()
+    is_remote = any(keyword in full_string for keyword in remote_keywords)
+    return is_remote
