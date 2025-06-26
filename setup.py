@@ -13,6 +13,7 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/leochan3/JobSyp-new2",
     packages=find_packages(),
+    package_data={"jobspy": ["*.py"]},
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",

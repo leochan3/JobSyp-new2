@@ -1,0 +1,1402 @@
+id,site,job_url,job_url_direct,title,company,location,date_posted,job_type,salary_source,interval,min_amount,max_amount,currency,is_remote,job_level,job_function,listing_type,emails,description,company_industry,company_url,company_logo,company_url_direct,company_addresses,company_num_employees,company_revenue,company_description,skills,experience_range,company_rating,company_reviews_count,vacancy_count,work_from_home_type
+in-ae6da7949c6c21f5,indeed,https://www.indeed.com/viewjob?jk=ae6da7949c6c21f5,https://click.appcast.io/t/804-98BhuGC9Ma0L8y146_ZTTpENu2_SCWIbir7ncf4=,"Principal, Data Analyst - Scaled PowerBI Solutions",Walmart,"Bentonville, AR, US",2025-06-26,,direct_data,yearly,90000.0,180000.0,USD,False,,,,,"**Position Summary...**
+-----------------------
+
+
+About the Global People Team  
+
+Leaders and individual contributors alike look to our Global People teams to influence strategy, optimize working models and enable the business to achieve results while preserving the fabric that sets us apart and keeps our 1\.3M\+ associates coming to work every day. By providing the necessary tools and insights, our People professionals operate as partners at every phase of workforce planning, talent management, organizational design and change management. From building communities to preparing Walmart for the future, to be a member of this team is to operate as a vital component to our sustainable success. Together, we think beyond the status\-quo and inspire others to evoke positive change. When you join us in Global People, you immerse yourself in our culture, becoming a trailblazer and a true agent of influence.  
+
+  
+
+About the Position  
+
+As a Principal, Data Analyst, you will be an integral member of our dynamic team, playing a pivotal role in the company's success. You will be part of the Workforce Intelligence \& Insights team, dedicated to creating scalable solutions and delivering insightful analyses to business leaders and partners. Our goal is to facilitate data\-driven decisions through innovative analytics solutions. Your role will be instrumental in furthering this vision, helping to equip our organization with the tools and insights necessary for success.  
+
+  
+
+In this role, you will have the opportunity to shape our data strategy's future, promoting the use of cutting\-edge technologies (including GenAI) and methodologies specifically supporting our Talent Acquisition Analytics function. You will collaborate closely with cross\-functional teams to design and execute solutions that not only cater to current needs but also foresee future challenges and opportunities. This role provides an opportunity for growth within a progressive team that values creativity, collaboration, and excellence. We are heavily invested in your professional development and provide a clear trajectory for career advancement, making this an ideal position for someone looking to make a significant impact and grow with the company.**What you'll do...**
+---------------------
+
+* **Data Source Identification**: Supporting the understanding of the priority order of requirements and service level agreements. Helping identify the most suitable source for data that is fit for purpose and carrying out preliminary quality assessments on the data collected.
+* **Data Strategy:** Understanding, articulating, and applying principles of the defined strategy to routine business problems that involve a single function.
+* **Understanding Business Context:** Requires Knowledge of industry and environmental factors, common business language, and business practices across areas like product, finance, marketing, sales, technology, business systems, and human resources. Providing advice to business stakeholders to address complex business issues. Translating business needs into projects, activities, and tasks and aligning them with the overall business strategy. Serve as an interpreter and conduit to connect business needs with tangible solutions and results. Identifying and recommending relevant business insights related to their area of work.
+* **Tech. Problem Formulation**: Requires knowledge of Analytics/big data analytics / automation techniques and methods; Translating business problems into data\-related or mathematical solutions; Identifying the right methods/tools for problem\-solving. Share use cases and examples to demonstrate how the method would solve the business problem.
+* **Data Visualization**: Generating appropriate graphical representations of data and model outcomes. Understanding customer requirements to design appropriate data representation for multiple data sets. Designing and building analytics products, and facilitating their delivery through our business intelligence, visualization, and analytics platforms. Presenting to and influencing the team and business audience using the appropriate frameworks and conveys clear messages through business and stakeholder understanding.
+* **Driving Business Solutions:** Providing and supporting the implementation of business solutions by building relationships and partnerships with key stakeholders; identifying business needs; determining and carrying out necessary processes and practices; monitoring progress and results; recognizing and capitalizing on improvement opportunities; and adapting to competing demands, organizational changes, and new responsibilities.
+* **Compliance:** Modeling compliance with company policies and procedures and supports company mission, values, and standards of ethics and integrity by incorporating these into the development and implementation of business plans; using the Open Door Policy; and demonstrating and assisting others with how to apply these in executing business processes and practices.
+
+**What you’ll bring…**
+
+* You have a passion for data and driving the data strategy forward to make an impact to the business.
+* You have experience in Data and Analytics with a strong preference for People and/or Talent Acquisition Analytics, with a demonstrated ability to manage, interpret, and draw insights from large data sets.
+* You have 5\-6 years hands\-on experience working with Power BI and its related Microsoft tech stack.
+* You have strong experience in SQL and ETL tools such as Alteryx, Dataiku or Tableau Prep. Experience supporting the implementation of GenAI capability is a plus!
+* You have a passion for creating visually appealing and user\-friendly dashboards that effectively communicate insights from large datasets.
+* You are driven by the opportunity to use data to enhance the associate experience and drive business outcomes.
+* You bring robust experience working cross\-functionally with business partners and team members residing in multiple time zones (US and India).
+* You excel at managing stakeholder expectations, prioritizing requests, and scoping projects to deliver high\-impact reporting solutions.
+
+
+At Walmart, we offer competitive pay as well as performance\-based bonus awards and other great benefits for a happier mind, body, and wallet. Health benefits include medical, vision and dental coverage. Financial benefits include 401(k), stock purchase and company\-paid life insurance. Paid time off benefits include PTO (including sick leave), parental leave, family care leave, bereavement, jury duty, and voting. Other benefits include short\-term and long\-term disability, company discounts, Military Leave Pay, adoption and surrogacy expense reimbursement, and more.
+‎
+
+
+‎
+
+
+‎
+
+
+You will also receive PTO and/or PPTO that can be used for vacation, sick leave, holidays, or other purposes. The amount you receive depends on your job classification and length of employment. It will meet or exceed the requirements of paid sick leave laws, where applicable.
+‎
+
+
+For information about PTO, see https://one.walmart.com/notices.
+
+
+‎
+
+
+‎
+
+
+Live Better U is a Walmart\-paid education benefit program for full\-time and part\-time associates in Walmart and Sam's Club facilities. Programs range from high school completion to bachelor's degrees, including English Language Learning and short\-form certificates. Tuition, books, and fees are completely paid for by Walmart.
+‎
+
+
+Eligibility requirements apply to some benefits and may depend on your job classification and length of employment. Benefits are subject to change and may be subject to a specific plan or program terms.
+‎
+
+
+For information about benefits and eligibility, see One.Walmart.
+
+
+‎
+
+
+The annual salary range for this position is $90,000\.00\-$180,000\.00
+‎
+
+
+Additional compensation includes annual or quarterly performance bonuses.
+‎
+
+
+Additional compensation for certain positions may also include:
+‎
+
+
+‎
+
+* Stock
+
+
+‎
+
+
+‎
+
+**Minimum Qualifications...**
+-----------------------------
+
+*Outlined below are the required minimum qualifications for this position. If none are listed, there are no minimum qualifications.*
+
+Option 1: Bachelor's degree in Business, Engineering, Statistics, Economics, Analytics, Mathematics, Arts, Finance or related field and 4 years' experience in data analysis, data science, statistics, or related field. Option 2: Master's degree in Business, Engineering, Statistics, Economics, Analytics, Mathematics, Computer Science, Information Technology or related field and 2 years' experience in data analysis, data science, statistics, or related field. Option 3: 6 years' experience in data analysis, data science, statistics, or related field.**Preferred Qualifications...**
+-------------------------------
+
+*Outlined below are the optional preferred qualifications for this position. If none are listed, there are no preferred qualifications.*
+
+
+Data science, data analysis, statistics, or related field, Master’s degree in Business, Computer Science, Engineering, Statistics, Economics, Analytics, Mathematics, Computer Science, Information Technology or related field, Related industry experience (for example, retail, merchandising, healthcare, eCommerce), Successful completion of assessments in data analysis and Business Intelligence tools and scripting languages (for example, SQL, Python, Spark, Scala, R, Power BI, or Tableau)**Primary Location...**
+-----------------------
+
+
+2403 Se J St, Bentonville, AR 72716, United States of America",,https://www.indeed.com/cmp/Walmart,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/81872361234125a30d818f132d5fa3f8,https://careers.walmart.com,"Bentonville, AR","10,000+",more than $10B (USD),"Headquartered in Bentonville, Arkansas, Walmart is a multinational corporation that operates the largest chain of department stores globally.",,,,,,
+in-0315f9de9eee2b31,indeed,https://www.indeed.com/viewjob?jk=0315f9de9eee2b31,https://click.appcast.io/t/rus2vMtValoHc-kPJOq61deTQ3TviYsev5jzQGc2vmA=,Full-time 3rd Shift Optical Lab Production Floor Associate Monday - Thursday 6pm to 4am,Walmart,"Fayetteville, AR, US",2025-06-25,fulltime,direct_data,hourly,18.0,20.0,USD,False,,,,,"**Position Summary...**
+-----------------------
+
+**What you'll do...**
+---------------------
+
+
+We are currently hiring a full\-time 3rd shift Optical Lab Production Floor Associate working Monday through Thursday from 6pm \- 4am for our Fayetteville, AR Optical Lab. Our manufacturing division focuses on delivering the Walmart Promise, Live Better Save Money in the realm of Optical eyewear manufacturing. Our commitment revolves around fostering a culture centered on safety, precision, outstanding service, and an unwavering dedication to continuous quality improvement. We have a strong robust partnership with the Walmart Vision Centers, allowing us to fulfill our Walmart mission of enhancing healthcare accessibility, convenience, and affordability for both our customers and the communities we proudly serve.
+
+
+At the heart of our success lie our exceptional associates who truly Make the Difference. If you aspire to be part of a team that not only delivers but also transforms the vision of the world around us, we invite you to join our dedicated and passionate team. Your contributions can help shape a brighter future for all.
+
+**Job Duties:**
+
+* An individual must be able to successfully perform the essential functions of this position with or without a reasonable accommodation.
+* Communicate with other Wal\-Mart associates (for example, internal Customers) verbally or in writing.
+* Maintain quality standards by reviewing and analyzing work tickets or other information for accuracy; adhering to standard operating procedures; and evaluating produced work for quality.
+* Produce and manufacture corrective eyewear by preparing lenses for production (for example, layout, taping, blocking); creating curvature and thickness of lenses according to prescription using lens grinding equipment; applying hard coating to lenses; and preparing lenses for add\-ons (for example, tint, no glare).
+
+**Physical Activities:**
+
+* The following physical activities are necessary to perform one or more essential functions of this position.
+* Enters and locates information on computer.
+* Moves up and down a ladder.
+* Moves up and down stairs.
+* Creates documents, reports, etc., using a writing instrument (such as a pencil or pen) or computer.
+* Grasps, turns, and manipulates objects of varying size and weight, requiring fine motor skills and hand\-eye coordination.
+* Visually verifies information, often in small print.
+* Reads information, often in small print.
+* Visually locates merchandise and other objects.
+* Visually inspects equipment.
+* Reaches overhead and below the knees, including bending, twisting, pulling, and stooping.
+* Moves, lifts, carries, and places merchandise and supplies weighing up to 40 pounds without assistance.
+* Apply sideways/upward/downward pressure to tighten and loosen hardware (for example, nuts, bolts).
+* Stand for extended periods of time.
+* Sit for extended periods of time.
+* Use approved equipment to step up and access freight and equipment in elevated areas.
+* Walk within work area for extended periods of time.
+* Use crossovers to access opposite sides of conveyors.
+* Differentiate sounds to inspect and maintain equipment, identify potential hazards, or recognize safety alarms.
+* Lift, push, pull, and carry tools, objects, or equipment above shoulder level without assistance.
+* Wear personal protective equipment (PPE) such as a back belt, harness, breathing apparatus, safety glasses, protective sleeve and glove, or freezer gear.
+
+**Minimum Requirements:**
+
+* 18\+ years old
+
+**Preferred Requirements:**
+
+* 6\+ months of job history
+**Benefits; Perks:**
+
+
+Beyond competitive pay, you can receive incentive awards for your performance. Other great perks include 401(k) match, stock purchase plan, paid maternity and parental leave, PTO, multiple health plans, and much more.
+
+
+**Equal Opportunity Employer** \- Walmart, Inc. is an Equal Opportunity Employer By Choice. We believe we are best equipped to help our associates, customers and the communities we serve live better when we really know them. That means understanding, respecting, and valuing unique styles, experiences, identities, ideas and opinions while being welcoming of all people.
+
+**Who We Are:**
+
+
+Join Walmart and your work could help over 275million global customers live better every week. Yes, we are the Fortune \#1 company. But you'll quickly find were a company who wants you to feel comfortable bringing your whole self to work. A career at Walmart is where the worlds most complex challenges meet a kinder way of life. Our mission spreads far beyond the walls of our stores. Join us and you'll discover why we are a world leader in a culture of belonging, sustainability, and community involvement. From day one, you'll be empowered and equipped to do the best work of your life.
+
+
+At Walmart, we offer competitive pay as well as performance\-based bonus awards and other great benefits for a happier mind, body, and wallet. Health benefits include medical, vision and dental coverage. Financial benefits include 401(k), stock purchase and company\-paid life insurance. Paid time off benefits include PTO (including sick leave), parental leave, family care leave, bereavement, jury duty, and voting. Other benefits include short\-term and long\-term disability, company discounts, Military Leave Pay, adoption and surrogacy expense reimbursement, and more.
+‎
+
+
+‎
+
+
+‎
+
+
+You will also receive PTO and/or PPTO that can be used for vacation, sick leave, holidays, or other purposes. The amount you receive depends on your job classification and length of employment. It will meet or exceed the requirements of paid sick leave laws, where applicable.
+‎
+
+
+For information about PTO, see https://one.walmart.com/notices.
+
+
+‎
+
+
+‎
+
+
+Live Better U is a Walmart\-paid education benefit program for full\-time and part\-time associates in Walmart and Sam's Club facilities. Programs range from high school completion to bachelor's degrees, including English Language Learning and short\-form certificates. Tuition, books, and fees are completely paid for by Walmart.
+‎
+
+
+Eligibility requirements apply to some benefits and may depend on your job classification and length of employment. Benefits are subject to change and may be subject to a specific plan or program terms.
+‎
+
+
+For information about benefits and eligibility, see One.Walmart.
+
+
+‎
+
+
+The hourly wage range for this position is $18\.35\-$20\.85\*
+‎
+
+* The actual hourly rate will equal or exceed the required minimum wage applicable to the job location.
+
+
+‎
+
+
+Additional compensation in the form of premiums may be paid in amounts ranging from $0\.35 per hour to $3\.00 per hour in specific circumstances. Premiums may be based on schedule, facility, season, or specific work performed. Multiple premiums may apply if applicable criteria are met.
+‎
+
+
+‎
+
+
+‎
+
+
+‎
+
+**Minimum Qualifications...**
+-----------------------------
+
+*Outlined below are the required minimum qualifications for this position. If none are listed, there are no minimum qualifications.*
+
+**Preferred Qualifications...**
+-------------------------------
+
+*Outlined below are the optional preferred qualifications for this position. If none are listed, there are no preferred qualifications.*
+
+**Primary Location...**
+-----------------------
+
+
+2314 W Martin Luther King Blvd, Fayetteville, AR 72701\-6219, United States of America",,https://www.indeed.com/cmp/Walmart,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/81872361234125a30d818f132d5fa3f8,https://careers.walmart.com,"Bentonville, AR","10,000+",more than $10B (USD),"Headquartered in Bentonville, Arkansas, Walmart is a multinational corporation that operates the largest chain of department stores globally.",,,,,,
+in-1e5c1c905a2f634a,indeed,https://www.indeed.com/viewjob?jk=1e5c1c905a2f634a,https://click.appcast.io/t/BkHmZ6mp6CrkMZoO0TJPPh5BW4fP4nJl2zZ-G_k2gJs=,"Senior, Software Engineer",Walmart,"Bentonville, AR, US",2025-06-25,,direct_data,yearly,90000.0,180000.0,USD,True,,,,,"**Position Summary...**
+-----------------------
+
+**What you'll do...**
+---------------------
+
+**Position:****Senior****,** **Software Engineer**
+--------------------------------------------------
+
+**Job Location:** Bentonville, AR
+
+
+As a Senior Software Engineer – Full Stack, you will take ownership of complex development initiatives that modernize and transform our customer care platform. You will lead the design and implementation of scalable, cloud\-native solutions across the front end and back end while mentoring team members and driving best practices.
+
+**About the Team:**
+
+
+Our customer care team is dedicated to providing exceptional cutting\-edge agent tools for customer care business. We've developed a home\-grown CRM solution tailored to our needs, giving us the edge in delivering personalized solutions that meet our customers' needs. Additionally, our innovative guided workflows streamline our processes, ensuring a seamless experience for both our agents and customers. Together, these tools enable us to help our agents deliver top\-notch customer care that sets us apart from the rest.
+
+**What you'll do:**
+
+* Lead development of full stack features, from user interfaces to backend services, ensuring scalability, performance, and reliability.
+* Translate product requirements into robust technical designs and implementation plans.
+* Build advanced and reusable ReactJS components and high\-performance web applications using Redux, TypeScript, NodeJS, and related technologies.
+* Architect and implement backend services using Java, Spring Boot, and REST APIs, following best practices in distributed systems.
+* Collaborate closely with architects, staff engineers, product managers, and QA engineers to ensure technical alignment and successful delivery.
+* Drive code quality through code reviews, mentoring, and best practices in unit testing, integration testing, and CI/CD.
+* Troubleshoot and resolve complex production issues and guide root cause analysis.
+* Help steer platform modernization and migration efforts, ensuring seamless transition from legacy systems to modern architectures.
+
+**What you will bring:**
+
+* 5\+ years of experience in full stack software development.
+* Expertise in ReactJS, Redux, TypeScript, ES6, NodeJS, and front\-end performance optimization.
+* Strong backend experience with Java, Spring Boot, REST API design, and microservices.
+* Experience in building distributed systems with Kafka or other messaging frameworks.
+* Cloud experience (preferably Azure) and deep understanding of CI/CD pipelines (Jenkins, GitHub Actions, or similar).
+* Solid grounding in data structures, algorithms, and software architecture.
+* Proven track record of leading technical initiatives, mentoring engineers, and driving continuous improvement.
+
+**Preferred Qualifications:**
+
+* Experience leading large\-scale system modernization or application migration projects.
+* Familiarity with CRM platforms or customer support tools.
+* Experience with containerization (Docker, Kubernetes) and observability tools.
+
+**Minimum education and experience required:** Bachelor’s degree or equivalent in Computer Science, Engineering (any), or a related field.
+
+**About Walmart Global Tech**  
+
+Imagine working in an environment where one line of code can make life easier for hundreds of millions of people. That’s what we do at Walmart Global Tech. We’re a team of software engineers, data scientists, cybersecurity expert's and service professionals within the world’s leading retailer who make an epic impact and are at the forefront of the next retail disruption. People are why we innovate, and people power our innovations. We are people\-led and tech\-empowered.
+
+
+We train our team in the skillsets of the future and bring in experts like you to help us grow. We have roles for those chasing their first opportunity as well as those looking for the opportunity that will define their career. Here, you can kickstart a great career in tech, gain new skills and experience for virtually every industry, or leverage your expertise to innovate at scale, impact millions and reimagine the future of retail.
+
+**Benefits**
+
+
+Beyond our great compensation package, you can receive incentive awards for your performance. Other great perks include a host of best\-in\-class benefits maternity and parental leave, PTO, health benefits, and much more.
+
+**Belonging**
+
+
+We aim to create a culture where every associate feels valued for who they are, rooted in respect for the individual. Our goal is to foster a sense of belonging, to create opportunities for all our associates, customers and suppliers, and to be a Walmart for everyone.
+
+
+At Walmart, our vision is ""everyone included."" By fostering a workplace culture where everyone is—and feels—included, everyone wins. Our associates and customers reflect the makeup of all 19 countries where we operate. By making Walmart a welcoming place where all people feel like they belong, we’re able to engage associates, strengthen our business, improve our ability to serve customers, and support the communities where we operate.
+
+
+At Walmart, we offer competitive pay as well as performance\-based bonus awards and other great benefits for a happier mind, body, and wallet. Health benefits include medical, vision and dental coverage. Financial benefits include 401(k), stock purchase and company\-paid life insurance. Paid time off benefits include PTO (including sick leave), parental leave, family care leave, bereavement, jury duty, and voting. Other benefits include short\-term and long\-term disability, company discounts, Military Leave Pay, adoption and surrogacy expense reimbursement, and more.
+‎
+
+
+‎
+
+
+‎
+
+
+You will also receive PTO and/or PPTO that can be used for vacation, sick leave, holidays, or other purposes. The amount you receive depends on your job classification and length of employment. It will meet or exceed the requirements of paid sick leave laws, where applicable.
+‎
+
+
+For information about PTO, see https://one.walmart.com/notices.
+
+
+‎
+
+
+‎
+
+
+Live Better U is a Walmart\-paid education benefit program for full\-time and part\-time associates in Walmart and Sam's Club facilities. Programs range from high school completion to bachelor's degrees, including English Language Learning and short\-form certificates. Tuition, books, and fees are completely paid for by Walmart.
+‎
+
+
+Eligibility requirements apply to some benefits and may depend on your job classification and length of employment. Benefits are subject to change and may be subject to a specific plan or program terms.
+‎
+
+
+For information about benefits and eligibility, see One.Walmart.
+
+
+‎
+
+
+The annual salary range for this position is $90,000\.00\-$180,000\.00
+‎
+
+
+Additional compensation includes annual or quarterly performance bonuses.
+‎
+
+
+Additional compensation for certain positions may also include:
+‎
+
+
+‎
+
+* Stock
+
+
+‎
+
+
+‎
+
+**Minimum Qualifications...**
+-----------------------------
+
+*Outlined below are the required minimum qualifications for this position. If none are listed, there are no minimum qualifications.*
+
+Option 1: Bachelor's degree in computer science, computer engineering, computer information systems, software engineering, or related area and 3 years’ experience in software engineering or related area.Option 2: 5 years’ experience in software engineering or related area.**Preferred Qualifications...**
+-------------------------------
+
+*Outlined below are the optional preferred qualifications for this position. If none are listed, there are no preferred qualifications.*
+
+
+Master’s degree in Computer Science, Computer Engineering, Computer Information Systems, Software Engineering, or related area and 1 year's experience in software engineering or related area., We value candidates with a background in creating inclusive digital experiences, demonstrating knowledge in implementing Web Content Accessibility Guidelines (WCAG) 2\.2 AA standards, assistive technologies, and integrating digital accessibility seamlessly. The ideal candidate would have knowledge of accessibility best practices and join us as we continue to create accessible products and services following Walmart’s accessibility standards and guidelines for supporting an inclusive culture.**Primary Location...**
+-----------------------
+
+
+2501 Se J St, Ste A, Bentonville, AR 72716\-3724, United States of America",,https://www.indeed.com/cmp/Walmart,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/81872361234125a30d818f132d5fa3f8,https://careers.walmart.com,"Bentonville, AR","10,000+",more than $10B (USD),"Headquartered in Bentonville, Arkansas, Walmart is a multinational corporation that operates the largest chain of department stores globally.",,,,,,
+in-043dfb7d4ac876dc,indeed,https://www.indeed.com/viewjob?jk=043dfb7d4ac876dc,https://click.appcast.io/t/8Xrl_qbMBGg6Lll-9zZFP2C1q507ZUDy4No2U8E3Ubk=,"Senior Manager, Finance - Technology Enterprise Business Solutions",Walmart,"Bentonville, AR, US",2025-06-25,,direct_data,yearly,90000.0,180000.0,USD,False,,,,,"**Position Summary...**
+-----------------------
+
+
+Join Walmart's Technology Finance team as a Senior Manager supporting the Enterprise Business Solutions (EBS) organization. In this strategic role, you'll serve as the financial partner to multiple Vice Presidents within E BS, helping drive technology solutions that impact every Walmart associate and customer. This is a unique opportunity to influence investment decisions and resource allocation in a dynamic and fast\-paced environment.  
+
+  
+
+About the Team  
+
+Our Technology Finance team supports the Enterprise Business Solutions (EBS) organization, driving technology solutions that impact every Walmart associate and customer. As a financial partner to multiple Vice Presidents, you will play a crucial role in strategic decision\-making, investment guidance, and resource allocation. Our team is dedicated to delivering clear, actionable financial insights and fostering strong partnerships with business leaders.**What you'll do...**
+---------------------
+
+* Act as a financial advisor to multiple VPs, providing strategic guidance on investment decisions and resource allocation.
+* Lead financial planning, forecasting, and analysis for assigned technology portfolios.
+* Develop and maintain strong partnerships with business leaders, their chiefs of staff, and HR partners.
+* Deliver clear, actionable financial insights and reporting that drive business decisions.
+* Evaluate organizational effectiveness through financial KPIs and metrics.
+* Provide an independent perspective on business initiatives and resource optimization.
+* Support strategic decision\-making by analyzing financial implications of current and future initiatives.
+
+**What You’ll Bring**
+
+* Strong financial acumen and expertise in Fin Ops.
+* Exceptional business partnering and relationship\-building abilities.
+* Experience influencing and maintaining accountability while preserving strong partnerships.
+* Ability to balance detail\-oriented analysis with clear, concise communication.
+* Strong organizational skills and ability to manage multiple competing priorities.
+* Collaborative mindset with dedication to team success.
+* Experience with financial tools and data analysis.
+* Understanding of technology business operations (technical expertise not required).
+
+
+The above information has been designed to indicate the general nature and level of work performed in the role. It is not designed to contain or be interpreted as a comprehensive inventory of all duties, responsibilities, and qualifications required of employees assigned to this job. The full Job Description can be made available as part of the hiring process.
+
+
+At Walmart, we offer competitive pay as well as performance\-based bonus awards and other great benefits for a happier mind, body, and wallet. Health benefits include medical, vision and dental coverage. Financial benefits include 401(k), stock purchase and company\-paid life insurance. Paid time off benefits include PTO (including sick leave), parental leave, family care leave, bereavement, jury duty, and voting. Other benefits include short\-term and long\-term disability, company discounts, Military Leave Pay, adoption and surrogacy expense reimbursement, and more.
+‎
+
+
+‎
+
+
+‎
+
+
+You will also receive PTO and/or PPTO that can be used for vacation, sick leave, holidays, or other purposes. The amount you receive depends on your job classification and length of employment. It will meet or exceed the requirements of paid sick leave laws, where applicable.
+‎
+
+
+For information about PTO, see https://one.walmart.com/notices.
+
+
+‎
+
+
+‎
+
+
+Live Better U is a Walmart\-paid education benefit program for full\-time and part\-time associates in Walmart and Sam's Club facilities. Programs range from high school completion to bachelor's degrees, including English Language Learning and short\-form certificates. Tuition, books, and fees are completely paid for by Walmart.
+‎
+
+
+Eligibility requirements apply to some benefits and may depend on your job classification and length of employment. Benefits are subject to change and may be subject to a specific plan or program terms.
+‎
+
+
+For information about benefits and eligibility, see One.Walmart.
+
+
+‎
+
+
+The annual salary range for this position is $90,000\.00\-$180,000\.00
+‎
+
+
+Additional compensation includes annual or quarterly performance bonuses.
+‎
+
+
+Additional compensation for certain positions may also include:
+‎
+
+
+‎
+
+* Stock
+
+
+‎
+
+
+‎
+
+**Minimum Qualifications...**
+-----------------------------
+
+*Outlined below are the required minimum qualifications for this position. If none are listed, there are no minimum qualifications.*
+
+Bachelor’s degree in Finance, Accounting, or related field and 4 years’ experience in accounting, finance, or related area OR 6 years’ experience in accounting, finance, or related area.  
+
+1 year’s experience leading and completing cross\-functional projects.  
+
+1 year’s supervisory experience.**Preferred Qualifications...**
+-------------------------------
+
+*Outlined below are the optional preferred qualifications for this position. If none are listed, there are no preferred qualifications.*
+
+
+Analyzing data and interpreting results, Microsoft Office, Working in a large, complex, matrixed organization
+Masters: Business Administration**Primary Location...**
+-----------------------
+
+
+1202 Phyllis St, Bentonville, AR 72716, United States of America",,https://www.indeed.com/cmp/Walmart,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/81872361234125a30d818f132d5fa3f8,https://careers.walmart.com,"Bentonville, AR","10,000+",more than $10B (USD),"Headquartered in Bentonville, Arkansas, Walmart is a multinational corporation that operates the largest chain of department stores globally.",,,,,,
+in-7b7dad1e45c6d35e,indeed,https://www.indeed.com/viewjob?jk=7b7dad1e45c6d35e,https://click.appcast.io/t/p6HCfmr0YpN4qM3CE4s-wOROUaECAGRjUk2q_SiDzLQ=,"Manager, Specialty Compliance and Ethics - Program Acceleration, Digital Transformation & GRC Platform Administrator",Walmart,"Bentonville, AR, US",2025-06-25,,direct_data,yearly,80000.0,155000.0,USD,False,,,,,"**Position Summary...**
+-----------------------
+
+
+Are you looking for a career where the world's most complex challenges and help drive impact through quality business insights and analytics for a fast growing, high\-impact area of the business? If so, this role might be for you!  
+
+  
+
+About the Position
+  
+
+Join Walmart as a Manager, Program Acceleration, Digital Transformation \& (Governance, Risk, and Compliance (GRC) Platform Administrator. This Manager position will manage and oversee a broad range of critical activities including maintaining the AuditBoard environment for Global Ethics \& Compliance (E\&C), developing management reporting and business analytics from the GRC tool and overseeing vendor relationships. In addition, The Manager will manage and maintain the AuditBoard environment, ensuring proper functionality, user management, assessment design, inventory and workstream management and other system supports. In this role, you will be the key partner to identify key opportunities and influence key stakeholders and Global Governance teams in building strong data frameworks leveraging advanced analytics and data visualization tools.**What you'll do...**
+---------------------
+
+* **Drive Digital Strategy and Transformation –** Understand key processes, metrics, and business goals to analyze, interpret, and communicate business performance, identify opportunities, and enable strategic decisions. Works with leadership to execute comprehensive multi\-year product roadmap.
+* **Serve as a Trusted Advisor –** Quickly develop trusting relationships with internal teams. Partner and participate in business strategy discussions and influence key business decisions with informed recommendations leveraging data. Be first line of support for all Global E\&C users, managing service incidents and vendor relations
+* **Serve as AuditBoard Administrator –** Demonstrates a strong understanding of AuditBoard modules used by Global E\&C, manage and maintain the AuditBoard environment, ensuring proper functionality, user management, assessment and process design, inventory and workstream management and other system supports. Builds centralized process for user support and onboarding.
+* **Deliver Data Driven Analysis –** Organize and validate relevant data prior to analysis; consolidate and identify exceptions and patterns; synthesize data for actionable customer insights; and translating information into action plans.
+* **Practice Continuous Process Improvement –** Work across the organization to identify and solve issues with a customer\-oriented mindset, bringing new ideas forward and influencing positive change.
+* **Drive a New Way of Working –** Advance our journey to become a more digital and data driven team championing data visualization tools to drive the business and educating stakeholders to promote adoption.
+
+**What you’ll bring…**
+
+* Motivation to take on tough problems while navigating ambiguous environments.
+* Strong communication, high precision execution and the ability to make complex ideas simple.
+* An ability to navigate evolving, dynamic environments.
+* Strong collaboration and the desire to support team members.
+* Strong organization, discipline, and prioritizing skills.
+* High curiosity and creativity with a track record of developing and executing sustainable solutions.
+* Demonstrated experience using advanced data visualization and analytics tools.
+* Strong organizational skills including prioritizing, scheduling, time management, and meeting deadlines.
+* Strong influencing and interpersonal skills Detail and results\-oriented with sense of urgency.
+* Experience with large dataset mining tools and open\-source programming tools (e.g., R, Python, HiveQL, Spark).
+* Strong project management skills: ability to manage large complex projects involving multiple business/ organization unit disciplines; effectively utilize project plans and methodology, has proven track record of project implementation; meeting deadlines.
+* Experience with Tableau, PowerBI or similar data visualization tools, Dataproc \| Spark \| Hive or similar data processing tools, Dataplex \| Collibra or similar data governance tools, Google Cloud Platform.
+* Bachelor’s degree specifically in Business, Finance, Mathematics, Process Engineering, Computer Science, or related field and 2 years’ experience conducting mathematical or statistical research, analysis and modeling intelligence, or related area OR 4 years’ experience conducting mathematical or statistical research, analysis and modeling intelligence, or related area.
+
+**Preferably…**
+
+* Experience using or managing AuditBoard Platform or other GRC tools.
+
+*The above information has been designed to indicate the general nature and level of work performed in the role. It is not designed to contain or be interpreted as a comprehensive inventory of all duties, responsibilities and qualifications required of employees assigned to this job. The full Job Description can be made available as part of the hiring process.*
+
+  
+
+
+At Walmart, we offer competitive pay as well as performance\-based bonus awards and other great benefits for a happier mind, body, and wallet. Health benefits include medical, vision and dental coverage. Financial benefits include 401(k), stock purchase and company\-paid life insurance. Paid time off benefits include PTO (including sick leave), parental leave, family care leave, bereavement, jury duty, and voting. Other benefits include short\-term and long\-term disability, company discounts, Military Leave Pay, adoption and surrogacy expense reimbursement, and more.
+‎
+
+
+‎
+
+
+‎
+
+
+You will also receive PTO and/or PPTO that can be used for vacation, sick leave, holidays, or other purposes. The amount you receive depends on your job classification and length of employment. It will meet or exceed the requirements of paid sick leave laws, where applicable.
+‎
+
+
+For information about PTO, see https://one.walmart.com/notices.
+
+
+‎
+
+
+‎
+
+
+Live Better U is a Walmart\-paid education benefit program for full\-time and part\-time associates in Walmart and Sam's Club facilities. Programs range from high school completion to bachelor's degrees, including English Language Learning and short\-form certificates. Tuition, books, and fees are completely paid for by Walmart.
+‎
+
+
+Eligibility requirements apply to some benefits and may depend on your job classification and length of employment. Benefits are subject to change and may be subject to a specific plan or program terms.
+‎
+
+
+For information about benefits and eligibility, see One.Walmart.
+
+
+‎
+
+
+The annual salary range for this position is $80,000\.00\-$155,000\.00
+‎
+
+
+Additional compensation includes annual or quarterly performance bonuses.
+‎
+
+
+Additional compensation for certain positions may also include:
+‎
+
+
+‎
+
+* Stock
+
+
+‎
+
+
+‎
+
+**Minimum Qualifications...**
+-----------------------------
+
+*Outlined below are the required minimum qualifications for this position. If none are listed, there are no minimum qualifications.*
+
+Bachelor's degree in Business, Human Resources, or related field and 2 years’ experience in compliance, ethics, legal, project management, or related area OR 4 years’ experience in compliance, ethics, legal, project management, or related area.  
+
+2 years’ experience using intermediate functionality of Microsoft Office.**Preferred Qualifications...**
+-------------------------------
+
+*Outlined below are the optional preferred qualifications for this position. If none are listed, there are no preferred qualifications.*
+
+
+Master's degree in Business, Human Resources, or related field, Project Management Certification, Supervisory experience**Primary Location...**
+-----------------------
+
+
+702 Sw 8Th St, Bentonville, AR 72716, United States of America",,https://www.indeed.com/cmp/Walmart,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/81872361234125a30d818f132d5fa3f8,https://careers.walmart.com,"Bentonville, AR","10,000+",more than $10B (USD),"Headquartered in Bentonville, Arkansas, Walmart is a multinational corporation that operates the largest chain of department stores globally.",,,,,,
+in-8d1390a482596f42,indeed,https://www.indeed.com/viewjob?jk=8d1390a482596f42,https://click.appcast.io/t/RI25QASKsqDnLOkt-5NB6A15q1jvgvDS2ujkv3AGvJE=,"Senior, Software Engineer",Walmart,"Bentonville, AR, US",2025-06-25,,direct_data,yearly,90000.0,180000.0,USD,True,,,,,"**Position Summary...**
+-----------------------
+
+**What you'll do...**
+---------------------
+
+**Position:****Senior****,** **Software Engineer**
+--------------------------------------------------
+
+**Job Location:** Bentonville, AR
+
+
+As a Senior Software Engineer – Full Stack, you will take ownership of complex development initiatives that modernize and transform our customer care platform. You will lead the design and implementation of scalable, cloud\-native solutions across the front end and back end while mentoring team members and driving best practices.
+
+**About the Team:**
+
+
+Our customer care team is dedicated to providing exceptional cutting\-edge agent tools for customer care business. We've developed a home\-grown CRM solution tailored to our needs, giving us the edge in delivering personalized solutions that meet our customers' needs. Additionally, our innovative guided workflows streamline our processes, ensuring a seamless experience for both our agents and customers. Together, these tools enable us to help our agents deliver top\-notch customer care that sets us apart from the rest.
+
+**What you'll do:**
+
+* Lead development of full stack features, from user interfaces to backend services, ensuring scalability, performance, and reliability.
+* Translate product requirements into robust technical designs and implementation plans.
+* Build advanced and reusable ReactJS components and high\-performance web applications using Redux, TypeScript, NodeJS, and related technologies.
+* Architect and implement backend services using Java, Spring Boot, and REST APIs, following best practices in distributed systems.
+* Collaborate closely with architects, staff engineers, product managers, and QA engineers to ensure technical alignment and successful delivery.
+* Drive code quality through code reviews, mentoring, and best practices in unit testing, integration testing, and CI/CD.
+* Troubleshoot and resolve complex production issues and guide root cause analysis.
+* Help steer platform modernization and migration efforts, ensuring seamless transition from legacy systems to modern architectures.
+
+
+What you will bring:
+
+* 5\+ years of experience in full stack software development.
+* Expertise in ReactJS, Redux, TypeScript, ES6, NodeJS, and front\-end performance optimization.
+
+* Strong backend experience with Java, Spring Boot, REST API design, and microservices.
+* Experience in building distributed systems with Kafka or other messaging frameworks.
+* Cloud experience (preferably Azure) and deep understanding of CI/CD pipelines (Jenkins, GitHub Actions, or similar).
+* Solid grounding in data structures, algorithms, and software architecture.
+* Proven track record of leading technical initiatives, mentoring engineers, and driving continuous improvement.
+
+
+Preferred Qualifications:
+
+* Experience leading large\-scale system modernization or application migration projects.
+* Familiarity with CRM platforms or customer support tools.
+* Experience with containerization (Docker, Kubernetes) and observability tools.
+
+**Minimum education and experience required:** Bachelor’s degree or equivalent in Computer Science, Engineering (any), or a related field.
+
+**About Walmart Global Tech**  
+
+Imagine working in an environment where one line of code can make life easier for hundreds of millions of people. That’s what we do at Walmart Global Tech. We’re a team of software engineers, data scientists, cybersecurity expert's and service professionals within the world’s leading retailer who make an epic impact and are at the forefront of the next retail disruption. People are why we innovate, and people power our innovations. We are people\-led and tech\-empowered.
+
+
+We train our team in the skillsets of the future and bring in experts like you to help us grow. We have roles for those chasing their first opportunity as well as those looking for the opportunity that will define their career. Here, you can kickstart a great career in tech, gain new skills and experience for virtually every industry, or leverage your expertise to innovate at scale, impact millions and reimagine the future of retail.
+
+**Benefits**
+
+
+Beyond our great compensation package, you can receive incentive awards for your performance. Other great perks include a host of best\-in\-class benefits maternity and parental leave, PTO, health benefits, and much more.
+
+**Belonging**
+
+
+We aim to create a culture where every associate feels valued for who they are, rooted in respect for the individual. Our goal is to foster a sense of belonging, to create opportunities for all our associates, customers and suppliers, and to be a Walmart for everyone.
+
+
+At Walmart, our vision is ""everyone included."" By fostering a workplace culture where everyone is—and feels—included, everyone wins. Our associates and customers reflect the makeup of all 19 countries where we operate. By making Walmart a welcoming place where all people feel like they belong, we’re able to engage associates, strengthen our business, improve our ability to serve customers, and support the communities where we operate.
+
+
+At Walmart, we offer competitive pay as well as performance\-based bonus awards and other great benefits for a happier mind, body, and wallet. Health benefits include medical, vision and dental coverage. Financial benefits include 401(k), stock purchase and company\-paid life insurance. Paid time off benefits include PTO (including sick leave), parental leave, family care leave, bereavement, jury duty, and voting. Other benefits include short\-term and long\-term disability, company discounts, Military Leave Pay, adoption and surrogacy expense reimbursement, and more.
+‎
+
+
+‎
+
+
+‎
+
+
+You will also receive PTO and/or PPTO that can be used for vacation, sick leave, holidays, or other purposes. The amount you receive depends on your job classification and length of employment. It will meet or exceed the requirements of paid sick leave laws, where applicable.
+‎
+
+
+For information about PTO, see https://one.walmart.com/notices.
+
+
+‎
+
+
+‎
+
+
+Live Better U is a Walmart\-paid education benefit program for full\-time and part\-time associates in Walmart and Sam's Club facilities. Programs range from high school completion to bachelor's degrees, including English Language Learning and short\-form certificates. Tuition, books, and fees are completely paid for by Walmart.
+‎
+
+
+Eligibility requirements apply to some benefits and may depend on your job classification and length of employment. Benefits are subject to change and may be subject to a specific plan or program terms.
+‎
+
+
+For information about benefits and eligibility, see One.Walmart.
+
+
+‎
+
+
+The annual salary range for this position is $90,000\.00\-$180,000\.00
+‎
+
+
+Additional compensation includes annual or quarterly performance bonuses.
+‎
+
+
+Additional compensation for certain positions may also include:
+‎
+
+
+‎
+
+* Stock
+
+
+‎
+
+
+‎
+
+**Minimum Qualifications...**
+-----------------------------
+
+*Outlined below are the required minimum qualifications for this position. If none are listed, there are no minimum qualifications.*
+
+Option 1: Bachelor's degree in computer science, computer engineering, computer information systems, software engineering, or related area and 3 years’ experience in software engineering or related area.Option 2: 5 years’ experience in software engineering or related area.**Preferred Qualifications...**
+-------------------------------
+
+*Outlined below are the optional preferred qualifications for this position. If none are listed, there are no preferred qualifications.*
+
+
+Master’s degree in Computer Science, Computer Engineering, Computer Information Systems, Software Engineering, or related area and 1 year's experience in software engineering or related area., We value candidates with a background in creating inclusive digital experiences, demonstrating knowledge in implementing Web Content Accessibility Guidelines (WCAG) 2\.2 AA standards, assistive technologies, and integrating digital accessibility seamlessly. The ideal candidate would have knowledge of accessibility best practices and join us as we continue to create accessible products and services following Walmart’s accessibility standards and guidelines for supporting an inclusive culture.**Primary Location...**
+-----------------------
+
+
+2501 Se J St, Ste A, Bentonville, AR 72716\-3724, United States of America",,https://www.indeed.com/cmp/Walmart,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/81872361234125a30d818f132d5fa3f8,https://careers.walmart.com,"Bentonville, AR","10,000+",more than $10B (USD),"Headquartered in Bentonville, Arkansas, Walmart is a multinational corporation that operates the largest chain of department stores globally.",,,,,,
+in-ace7a25e7c87f3ae,indeed,https://www.indeed.com/viewjob?jk=ace7a25e7c87f3ae,https://click.appcast.io/t/m-nBbpzEj8DjVrV_vfL_3z1DVEP4gaxvuauCgxGZ_ds=,"Senior Manager, Communications & Engagement",Walmart,"Bentonville, AR, US",2025-06-25,,direct_data,yearly,90000.0,180000.0,USD,False,,,,,"**Position Summary...**
+-----------------------
+
+
+The Sr. Manager, Communications and Engagement leads enterprise\-wide communications designed to  
+
+inform, support, and empower our global agent population—including internal associates and vendor  
+
+partners. Reporting into the Director, Communications \& Engagement, this role drives frontline connection by delivering daily, high\-impact messaging and experience strategies tailored for agents across the Customer Engagement Services (CES) ecosystem. From daily surveys and newsletters to podcasts and operational town halls, this leader ensures agents stay aligned to CES priorities, connected to their purpose, and engaged in ways that elevate the customer and associate experience.  
+
+  
+
+This role partners closely with global Contact Operations teams and vendor management leads to build  
+
+scalable, inclusive messaging that drives clarity, action, and trust at the front line.**What you'll do...**
+---------------------
+
+
+We’re looking for a strategic, high\-judgment leader to manage our most sensitive and high\-profile customer issues—those escalated to senior executives, board members, or regulatory agencies like the Attorney General’s office. This role will lead a team that delivers white\-glove service, drives rapid issue resolution, and partners across the business to fix what’s broken—fast.
+
+
+You’ll make an impact by:
+
+* Leading executive and regulatory escalations: Owning the end\-to\-end resolution of customer issues that escalate to the C\-suite, board, or external regulatory bodies. Balancing empathy, speed, and compliance to restore trust.
+* Developing a high\-performing team: Hiring, coaching, and leading escalation managers to deliver best\-in\-class experiences and outcomes. Setting clear expectations for service quality, speed, and professionalism.
+* Driving cross\-functional accountability: Partnering with Legal, Risk, Compliance, Product, and Field Operations to resolve complex issues and remove roadblocks. Leading with influence to ensure the business owns root cause resolution.
+* Improving systems and processes: Identifying patterns in escalations and working cross\-functionally to reduce defects. Elevating insights to drive long\-term improvements that benefit customers at scale.
+* Communicating with clarity and credibility: Delivering concise, executive\-level reporting on trends, risks, and resolution performance. Representing the voice of the customer in high\-stakes forums.
+* Managing risk and ensuring compliance: Operating with a high level of discretion. Ensuring that escalations are resolved in line with regulatory requirements, company policy, and brand standards.
+
+**You'll sweep us off our feet if...**
+--------------------------------------
+
+* You’ve led escalation or executive relations teams in large\-scale operations
+
+
+• You can navigate complexity and influence across matrixed organizations • You write and communicate with precision under pressure
+
+* You care deeply about customer trust, experience, and advocacy
+* You’re energized by fixing root problems and making the business better
+
+**Minimum Qualifications...**
+-----------------------------
+
+* Bachelor’s degree in Business, Communications, or related field; MBA or JD preferred
+* 7\+ years in customer service, contact centers, or customer experience
+* 3\+ years leading teams that manage executive or regulatory escalations
+* Strong background in regulated industries or high\-visibility service roles
+* Experience working with CRM and case management platforms (e.g., Salesforce, Zendesk)
+
+**About Walmart Global Customer Engagement Services (Contact Operations)**
+--------------------------------------------------------------------------
+
+
+We’re reimagining how millions of customers connect with Walmart—every day, in every channel. From hands\-on support to behind\-the\-scenes strategy, we put the customer first and move fast to solve real problems. Our teams lead with care, curiosity, and commitment to doing what’s right—because every interaction is a chance to make it easier for our customers to live better.
+
+
+At Walmart, we offer competitive pay as well as performance\-based bonus awards and other great benefits for a happier mind, body, and wallet. Health benefits include medical, vision and dental coverage. Financial benefits include 401(k), stock purchase and company\-paid life insurance. Paid time off benefits include PTO (including sick leave), parental leave, family care leave, bereavement, jury duty, and voting. Other benefits include short\-term and long\-term disability, company discounts, Military Leave Pay, adoption and surrogacy expense reimbursement, and more.
+‎
+
+
+‎
+
+
+‎
+
+
+You will also receive PTO and/or PPTO that can be used for vacation, sick leave, holidays, or other purposes. The amount you receive depends on your job classification and length of employment. It will meet or exceed the requirements of paid sick leave laws, where applicable.
+‎
+
+
+For information about PTO, see https://one.walmart.com/notices.
+
+
+‎
+
+
+‎
+
+
+Live Better U is a Walmart\-paid education benefit program for full\-time and part\-time associates in Walmart and Sam's Club facilities. Programs range from high school completion to bachelor's degrees, including English Language Learning and short\-form certificates. Tuition, books, and fees are completely paid for by Walmart.
+‎
+
+
+Eligibility requirements apply to some benefits and may depend on your job classification and length of employment. Benefits are subject to change and may be subject to a specific plan or program terms.
+‎
+
+
+For information about benefits and eligibility, see One.Walmart.
+
+
+‎
+
+
+The annual salary range for this position is $90,000\.00\-$180,000\.00
+‎
+
+
+Additional compensation includes annual or quarterly performance bonuses.
+‎
+
+
+Additional compensation for certain positions may also include:
+‎
+
+
+‎
+
+* Stock
+
+
+‎
+
+
+‎
+
+**Minimum Qualifications...**
+-----------------------------
+
+*Outlined below are the required minimum qualifications for this position. If none are listed, there are no minimum qualifications.*
+
+Bachelor’s degree in Journalism, Communications, Public Relations, or related field and 4 years’ experience in corporate communications, public relations, or relevant area OR 6 years’ experience in corporate communications, public relations, or relevant area.  
+
+1 year’s supervisory experience or experience leading cross\-functional teams.**Preferred Qualifications...**
+-------------------------------
+
+*Outlined below are the optional preferred qualifications for this position. If none are listed, there are no preferred qualifications.*
+
+
+Politics, journalism, or relevant area, Working in a corporate retail or Fortune 100 environment**Primary Location...**
+-----------------------
+
+
+702 Sw 8Th St, Bentonville, AR 72716, United States of America",,https://www.indeed.com/cmp/Walmart,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/81872361234125a30d818f132d5fa3f8,https://careers.walmart.com,"Bentonville, AR","10,000+",more than $10B (USD),"Headquartered in Bentonville, Arkansas, Walmart is a multinational corporation that operates the largest chain of department stores globally.",,,,,,
+in-04d57cffef51de15,indeed,https://www.indeed.com/viewjob?jk=04d57cffef51de15,https://click.appcast.io/t/xBge4aRp3rwOozjmfb8pIB3D3eY_Q4diyV1AI7Ietyo=,"(USA) Senior Manager, Data Science",Walmart,"Bentonville, AR, US",2025-06-25,,direct_data,yearly,110000.0,220000.0,USD,True,,,,,"**Position Summary...**
+-----------------------
+
+**What you'll do...**
+---------------------
+
+
+Model Assessment and Validation Requires knowledge of model fit testing tuning and validation techniques eg Chi square ROC curve root mean square error etc Impact of variables and features on model performance To Identify the model evaluation metrics Apply best practice techniques for model testing and tuning to assess accuracy fit validity and robustness for multistage models and model ensembles Data Visualization Requires knowledge of Visualization guidelines and best practices for complex data types Multiple data visualization tools for example Python R libraries GGplot Matplotlib Ploty Tableau PowerBI etc Advanced visualization techniques tools Multiple story plots and structures OABCDE Communication influencing technique Emotional intelligence To generate appropriate graphical representations of data and model outcomes Understand customer requirements to design appropriate data representation for multiple data sets Work with User Experience designers and User Interface engineers as required to build front end applications Present to and influence the team and business audience using the appropriate data visualization frameworks and conveys clear messages through business and stakeholder understanding Customize communication style based on stakeholder under guidance and leverages rational arguments Guide and mentor junior associates on story types structures and techniques based on context Understanding Business Context Requires knowledge of Industry and environmental factors Common business vernacular Business practices across two or more domains such as product finance marketing sales technology business systems and human resources and indepth knowledge of related practices Directly relevant business metrics and business areas To Provide recommendations to business stakeholders to solve complex business issues Develop business cases for projects with a projected return on investment or cost savings Translate business requirements into projects activities and tasks and aligns to overall business strategy and develops domain specific artifact Serve as an interpreter and conduit to connect business needs with tangible solutions and results Identify and recommend relevant business insights pertaining to their area of work Analytical Modeling Requires knowledge of feature relevance and selection Exploratory data analysis methods and techniques Advanced statistical methods and bestpractice advanced modelling techniques eg graphical models Bayesian inference basic level of NLP Vision neural networks SVM Random Forest etc Multivariate calculus Statistical models behind standard ML models Advanced excel techniques and Programming languages like RPython Basic classical optimization techniques eg NewtonRapson methods Gradient descent Numerical methods of optimization eg Linear Programming Integer Programming Quadratic Programming etc To select appropriate modeling techniques for complex problems with large scale multiple structured and unstructured data sets Select and develop variables and features iteratively based on model responses in collaboration with the business Conducts exploratory data analysis activities for example basic statistical analysis hypothesis testing statistical inferences on available data Identify dimensions and designs of experiments and create test and learn frameworks Interpret data to identify trends to go across future data sets Create continuous online model learning along with iterative model enhancements Develop newer techniques for example advanced machine learning algorithms auto ML by leveraging the latest trends in machine learning artificial intelligence to train algorithms to apply models to new data sets Guide the team on feature engineering experimentation and advanced modeling techniques to be used for complex problems with unstructured and multiple data sets for example streaming data raw text data Model Deployment and Scaling Requires knowledge of impact of variables and features on model performance understanding of servers model formats to store models To deploy models to production Continuously log and track model behavior once it is deployed against the defined metrics Identify model parameters which may need modifications depending on scale of deployment Code Development and Testing Requires knowledge of coding languages like SQL Java C Python and others Testing methods such as static dynamic software composition analysis manual penetration testing and others Business domain understanding To write code to develop the required solution and application features by determining the appropriate programming language and leveraging business technical and data requirements Create test cases to review and validate the proposed solution design Create proofs of concept Test the code using the appropriate testing approach Deploy software to production servers Contribute code documentation maintain playbooks and provide timely progress updates Tech Problem Formulation Requires knowledge of Analyticsbig data analytics automation techniques and methods Business understanding Precedence and use cases Business requirements and insights To analyze the business problem within ones discipline and questions assumptions to help the business identify the root cause Identify and recommend approach to resolve the business problem to create effective technology focused solutions Set relevant deliverables based on the established success criteria and define key metrics to measure progress and effectiveness of the solution Quantify business impact Data Source Identification Requires knowledge of Functional business domain and scenarios Categories of data and where it is held Business data requirements Database technologies and distributed datastores eg SQL NoSQL Data Quality Existing business systems and processes including the key drivers and measures of success To understand the priority order of requirements and service level agreements Define and identify the most suitable sources for required data that is fit for purpose referring to external sources as required Perform initial data quality checks on the extracted data Review the deliverables of junior associates and provides guidance on data source and quality Data Strategy Requires knowledge of understanding of business value and relevance of data and data enabled insights decisions Appropriate application and understanding of data ecosystem including Data Management Data Quality Standards and Data Governance Accessibility Storage and Scalability etc Understanding of the methods and applications that unlock the monetary value of data assets To understand articulate interpret and apply the principles of the defined strategy to unique moderately complex business problems that may span one or more functions or domains Drives the execution of multiple business plans and projects by identifying customer and operational needs developing and communicating business plans and priorities removing barriers and obstacles that impact performance providing resources identifying performance standards measuring progress and adjusting performance accordingly developing contingency plans and demonstrating adaptability and supporting continuous learning Provides supervision and development opportunities for associates by selecting and training mentoring assigning duties building a teambased work environment establishing performance expectations and conducting regular performance evaluations providing recognition and rewards coaching for success and improvement and promoting a belonging mindset in the workplace Promotes and supports company policies procedures mission values and standards of ethics and integrity by training and providing direction to others in their use and application ensuring compliance with them and utilizing and supporting the Open Door Policy Ensures business needs are being met by evaluating the ongoing effectiveness of current plans programs and initiatives consulting with business partners managers coworkers or other key stakeholders soliciting evaluating and applying suggestions for improving efficiency and costeffectiveness and participating in and supporting community outreach events Respect the Individual Demonstrates and encourages respect for all builds a highperforming team seeks and embraces differences in people cultures ideas and experiences creates a workplace where all associates feel seen supported and connected through culture of belonging so associates thrive and perform drives a positive associate and customermember experience for all identifies attracts and retains the best team members Respect the Individual Creates a discipline and focus around developing talent through feedback coaching mentoring and developmental opportunities promotes an environment allowing everyone to bring their best selves to work empowers associates and partners to act in the best interest of the customermember and company and regularly recognizes others contributions and accomplishments Respect the Individual Builds strong and trusting relationships with team members and business partners works collaboratively and crossfunctionally to achieve objectives and communicates and listens attentively with energy and positivity to motivate influence and inspire commitment and action Act with Integrity Maintains and promotes the highest standards of integrity ethics and compliance models the Walmart values and leads by example to foster our culture supports Walmarts goal of becoming a regenerative company by making a positive impact for associates customers and the world around us eg creating a sense of belonging eliminating waste participating in local giving Act with Integrity Follows the law our code of conduct and company policies and sets expectations for others to do the same promotes an environment where associates feel comfortable sharing concerns and reinforces our culture of nonretaliation listens to concerns raised by associates takes action and encourages others to do the same holds self and others accountable for achieving results in a way that is consistent with our values Act with Integrity Acts as an altruistic servant leader and is consistently humble selfaware honest and transparent Serve our Customers and Members Delivers expected business results while putting the customermember first and consistently applying an omnimerchant mindset and acts with an Every Day LowCost mindset to drive value and Every Day Low Prices for customersmembers Serve our Customers and Members Adopts a holistic perspective that considers data analytics customermember insights and different parts of the business when making plans and shaping the teams strategy Strive for Excellence Consistently raises the bar and seeks to improve demonstrates curiosity and a growth mindset seeks feedback asks thoughtful questions fosters an environment that supports learning innovation and learning from mistakes and intelligent risktaking and exhibits resilience in the face of setbacks Strive for Excellence Seeks and implements continuous improvements and encourages the team to leverage new digital tools and ways of working
+At Walmart, we offer competitive pay as well as performance\-based bonus awards and other great benefits for a happier mind, body, and wallet. Health benefits include medical, vision and dental coverage. Financial benefits include 401(k), stock purchase and company\-paid life insurance. Paid time off benefits include PTO (including sick leave), parental leave, family care leave, bereavement, jury duty, and voting. Other benefits include short\-term and long\-term disability, company discounts, Military Leave Pay, adoption and surrogacy expense reimbursement, and more.
+‎
+
+
+‎
+
+
+‎
+
+
+You will also receive PTO and/or PPTO that can be used for vacation, sick leave, holidays, or other purposes. The amount you receive depends on your job classification and length of employment. It will meet or exceed the requirements of paid sick leave laws, where applicable.
+‎
+
+
+For information about PTO, see https://one.walmart.com/notices.
+
+
+‎
+
+
+‎
+
+
+Live Better U is a Walmart\-paid education benefit program for full\-time and part\-time associates in Walmart and Sam's Club facilities. Programs range from high school completion to bachelor's degrees, including English Language Learning and short\-form certificates. Tuition, books, and fees are completely paid for by Walmart.
+‎
+
+
+Eligibility requirements apply to some benefits and may depend on your job classification and length of employment. Benefits are subject to change and may be subject to a specific plan or program terms.
+‎
+
+
+For information about benefits and eligibility, see One.Walmart.
+
+
+‎
+
+
+The annual salary range for this position is $110,000\.00\-$220,000\.00
+‎
+
+
+Additional compensation includes annual or quarterly performance bonuses.
+‎
+
+
+Additional compensation for certain positions may also include:
+‎
+
+
+‎
+
+* Stock
+
+
+‎
+
+
+‎
+
+**Minimum Qualifications...**
+-----------------------------
+
+*Outlined below are the required minimum qualifications for this position. If none are listed, there are no minimum qualifications.*
+
+Option 1: Bachelors degree in Statistics, Economics, Analytics, Mathematics, Computer Science, Information Technology or related field and 5 years' experience in an analytics related field. Option 2: Masters degree in Statistics, Economics, Analytics, Mathematics, Computer Science, Information Technology or related field and 3 years' experience in an analytics related field. Option 3: 7 years' experience in an analytics or related field.**Preferred Qualifications...**
+-------------------------------
+
+*Outlined below are the optional preferred qualifications for this position. If none are listed, there are no preferred qualifications.*
+
+
+Data science, machine learning, optimization models, PhD in Machine Learning, Computer Science, Information Technology, Operations Research, Statistics, Applied Mathematics, Econometrics, Successful completion of one or more assessments in Python, Spark, Scala, or R, Supervisory experience, Using open source frameworks (for example, scikit learn, tensorflow, torch), We value candidates with a background in creating inclusive digital experiences, demonstrating knowledge in implementing Web Content Accessibility Guidelines (WCAG) 2\.2 AA standards, assistive technologies, and integrating digital accessibility seamlessly. The ideal candidate would have knowledge of accessibility best practices and join us as we continue to create accessible products and services following Walmart’s accessibility standards and guidelines for supporting an inclusive culture.**Primary Location...**
+-----------------------
+
+
+702 Sw 8Th St, Bentonville, AR 72716, United States of America",,https://www.indeed.com/cmp/Walmart,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/81872361234125a30d818f132d5fa3f8,https://careers.walmart.com,"Bentonville, AR","10,000+",more than $10B (USD),"Headquartered in Bentonville, Arkansas, Walmart is a multinational corporation that operates the largest chain of department stores globally.",,,,,,
+in-b7fabd571b7ffc7d,indeed,https://www.indeed.com/viewjob?jk=b7fabd571b7ffc7d,https://click.appcast.io/t/F31-uJXDEmec6YQ6xg_Eqr09t6n_QBhMqawmHIJH9EY=,"(USA) Manager, Site Merchandising - Computing",Walmart,"Bentonville, AR, US",2025-06-25,,direct_data,yearly,70000.0,130000.0,USD,False,,,,,"**Position Summary...**
+-----------------------
+
+**What you'll do...**
+---------------------
+
+
+Location: Onsite: Bentonville, AR
+
+  
+
+Manager, Site Merchandising
+
+
+Want to help lead the way in redefining how we shop online? The Manager, Site Merchandising – Computing is a critical leader in shaping the customer site experience for the business function supported, overseeing everything from visual merchandising to content strategy to functionality and campaign planning and execution. They'll drive impact, improvement, and innovation to create a truly frictionless online shopping experience and help our eCommerce business.
+
+  
+
+You'll sweep us off our feet if:
+
+* You understand how customers shop online and use strategic thinking and innovation to create a seamless and fresh site experience for our customers.
+* You're a visionary constantly looking for ways to set us apart from the competition, driving new and enhanced functionality to make the shopping experience easy and convenient.
+* You use data and insights to make informed and impactful decisions and you have the acumen to translate complex data into actions and improvements.
+* You have an incredible focus on operational excellence and getting the fundamentals right while identifying opportunities for efficiency and improvement.
+* You build trust quickly and can lead by influence, creating impact through partnership as well as ownership.
+* You believe in and prioritize the collective success of the team and are quick to jump in, help, mentor, and coach your fellow team members.
+  
+
+You'll make an impact by:
+
+* Leading the brand content strategy You'll drive the holistic content strategy using trends and customer insights to tell a cohesive story and create a seamless customer experience, overseeing the brand launches calendar and governance, site functionality including navigation, hierarchy, search and browse, and new product on\-boarding.
+* Telling a story through our site You'll identify key brand stories and define the brands story\-telling road map, shaping where and how we invest. You will use key functionalities like taxonomy and search to enhance brand discovery on our site, telling a cohesive story to elevate brand perception and build brand loyalty.
+* Developing seasonal campaign strategy You'll manage the short\-term and long\-term site merchandising strategy for Food seasonal campaigns ; events to achieve key business and financial objectives translating the assortment strategy into site strategy and experiences.
+* Working collaboratively with marketing and editorial You'll drive campaign strategy, planning, and execution providing insights to Merchant partners on historical campaign performance and customer behavior to influence future campaign strategy. You will execute campaign activities within agreed timeframes at the agreed levels of quality and provide feedback and insights on campaign effectiveness.
+* Leveraging data to optimize the content strategy You'll leverage data, reporting and analytical insights to set goals, measure success and continually refine strategic brands content mix and strategy.
+* Monitoring site health and performance through analytics and key metrics.
+* Becoming an invaluable strategic partner to internal stakeholders You'll advise on and partner with various internal teams to improve processes, identify opportunities, and scale best practice and governance, driving continual assessment and improvement of the sites strategic direction and execution.
+* Operating with excellence You'll land the fundamentals and create and help scale best\-in\-class efficient workflows, processes, and timelines, embedding operational excellence into everything you do and developing associates on the team to increase capabilities and enhance skills, knowledge and performance.
+  
+
+Develops the short\-term and long\-term site merchandising strategy for seasonal campaigns ; events to achieve key business and financial objectives, translating the assortment strategy into site strategy and experiences.
+
+
+Works collaboratively with marketing and editorial on campaign strategy, planning, and execution. Provides insights to Merchant partners on historical campaign performance and customer behavior to influence future campaign strategy. Executes campaign activities within agreed timeframes at the agreed levels of quality and provides feedback and insights on campaign effectiveness.
+
+  
+
+Minimum Qualification:
+
+* Bachelor degree in business or related field or equivalent experience in Business or related field
+  
+
+Preferred Qualification:
+
+* 4\+ years related experience in Merchandising, Site Merchandising, or related field
+* Masters Degree in Business or related field
+* 3\+ years demonstrated experience managing a team
+* 3\+years of experience in consumer\-focused e\-commerce environment
+* Strong customer obsession focused on building the right site experience for our customer
+* Analytical and process\-oriented, comfortable making data\-driven decisions
+* Ability to set clear team objectives and performance measures
+* Ability to select and develop a team of future leaders
+* Demonstrated ability to work as part of a cross\-functional team and willingness to take on responsibilities outside primary job description when necessary
+* Assertive, adaptable and demonstrates initiative in a fast\-paced environment with competing priorities
+  
+
+The above information has been designed to indicate the general nature and level of work performed in the role. It is not designed to contain or be interpreted as a comprehensive inventory of all duties, responsibilities and qualifications required of employees assigned to this job. The full Job Description can be made available as part of the hiring process.
+
+  
+
+Benefits ; Perks:
+
+
+Beyond competitive pay, you can receive incentive awards for your performance. Other great perks include 401(k) match, stock purchase plan, paid maternity and parental leave, PTO, multiple health plans, and much more.
+
+  
+
+Equal Opportunity Employer
+
+
+Walmart, Inc. is an Equal Opportunity Employer By Choice. We believe we are best equipped to help our associates, customers and the communities we serve live better when we really know them. That means understanding, respecting and valuing unique styles, experiences, identities, ideas and opinions while being welcoming of all people.
+
+  
+
+Who We Are
+
+
+Join Walmart and your work could help over 275million global customers live better every week. Yes, we are the Fortune \#1 company. But you'll quickly find were a company who wants you to feel comfortable bringing your whole self to work. A career at Walmart is where the worlds most complex challenges meet a kinder way of life. Our mission spreads far beyond the walls of our stores. Join us and you'll discover why we are a world leader in a culture of belonging, sustainability, and community involvement. From day one ,you'll be empowered and equipped to do the best work of your life.careers.walmart.com
+
+  
+
+
+At Walmart, we offer competitive pay as well as performance\-based bonus awards and other great benefits for a happier mind, body, and wallet. Health benefits include medical, vision and dental coverage. Financial benefits include 401(k), stock purchase and company\-paid life insurance. Paid time off benefits include PTO (including sick leave), parental leave, family care leave, bereavement, jury duty, and voting. Other benefits include short\-term and long\-term disability, company discounts, Military Leave Pay, adoption and surrogacy expense reimbursement, and more.
+‎
+
+
+‎
+
+
+‎
+
+
+You will also receive PTO and/or PPTO that can be used for vacation, sick leave, holidays, or other purposes. The amount you receive depends on your job classification and length of employment. It will meet or exceed the requirements of paid sick leave laws, where applicable.
+‎
+
+
+For information about PTO, see https://one.walmart.com/notices.
+
+
+‎
+
+
+‎
+
+
+Live Better U is a Walmart\-paid education benefit program for full\-time and part\-time associates in Walmart and Sam's Club facilities. Programs range from high school completion to bachelor's degrees, including English Language Learning and short\-form certificates. Tuition, books, and fees are completely paid for by Walmart.
+‎
+
+
+Eligibility requirements apply to some benefits and may depend on your job classification and length of employment. Benefits are subject to change and may be subject to a specific plan or program terms.
+‎
+
+
+For information about benefits and eligibility, see One.Walmart.
+
+
+‎
+
+
+The annual salary range for this position is $70,000\.00\-$130,000\.00
+‎
+
+
+Additional compensation includes annual or quarterly performance bonuses.
+‎
+
+
+Additional compensation for certain positions may also include:
+‎
+
+
+‎
+
+* Stock
+
+
+‎
+
+
+‎
+
+**Minimum Qualifications...**
+-----------------------------
+
+*Outlined below are the required minimum qualifications for this position. If none are listed, there are no minimum qualifications.*
+
+Bachelor's degree in merchandising, visual design, business management, or related area and 3 years’ experience in eCommerce merchandising, UI/UX, interactive and visual design, business management, or related area OR 5 years’ experience in eCommerce merchandising, UI/UX, interactive and visual design, business management, or related area.**Preferred Qualifications...**
+-------------------------------
+
+*Outlined below are the optional preferred qualifications for this position. If none are listed, there are no preferred qualifications.*
+
+
+ECommerce merchandising, UI/UX, Interactive and Visual Design, Business Management, or related area, Master's degree in Merchandising, Visual Design, Business Management, or related area
+Masters: Business**Primary Location...**
+-----------------------
+
+
+702 Sw 8Th St, Bentonville, AR 72716, United States of America",,https://www.indeed.com/cmp/Walmart,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/81872361234125a30d818f132d5fa3f8,https://careers.walmart.com,"Bentonville, AR","10,000+",more than $10B (USD),"Headquartered in Bentonville, Arkansas, Walmart is a multinational corporation that operates the largest chain of department stores globally.",,,,,,
+in-7701d87f35916589,indeed,https://www.indeed.com/viewjob?jk=7701d87f35916589,https://click.appcast.io/t/rUaI4XlL5-20M-iA7EwTw3CYzGzW99fxDx7_oOCIPYk=,2026 Summer Intern: Walmart Merchandising,Walmart,"Bentonville, AR, US",2025-06-25,internship,direct_data,hourly,19.0,35.0,USD,False,,,,,"**Position Summary...**
+-----------------------
+
+**What you'll do...**
+---------------------
+
+
+A **Merchandising Internship** means an opportunity to explore a career as part of the world’s largest retailer! We are seeking students who exhibit curiosity, digital and financial acumen, as well as robust problem\-solving skills to deliver solutions to complex and challenging issues. You will learn the core merchandising business as well as the support functions of Merchandising (such as Private Brands, Sourcing, Planning, Business Analytics, and Replenishment).
+
+**The Internship**: Held over an 11\-week period during the summer of 2026 for students in their penultimate year of college. The paid internship will prepare associates for a career in Merchandising by working on a meaningful project, networking with industry experts, and developing your skills at the Fortune 1 as you explore our HQ in Northwest Arkansas!
+
+**What is Merchandising at Walmart? See below!**
+
+**Data and Digital Acumen**: Leverages data analysis tools to explore simple data, performs basic statistical analysis, derives insights, and creates basic reports. Uses visualization tools to represent data and construct coherent stories to influence decisions. Identifies, implements, and drives technology change within scope of work.  
+
+  
+
+**Shopper/Customer Experience**: Owns the execution of customer communication and education programs in stores. Collaborates with the modular team. Owns search queries for an assigned category. Ensures the quality and accuracy of product page content. Follows taxonomy guidelines. Collaborates with Site Merchandising to run campaigns on the Walmart.com home page as planned. Implements rules to filter what appears in search results for shared search terms as needed.  
+
+  
+
+**Budgeting \& Forecasting**: Supports category finances by tracking performance against organizational financial targets. Creates sales reports that analyze sub\-category performance against overall business results as needed. Supports forecasting as assigned. Provides input on budgeting at the sub\-category level or below. Coordinates with planners/business analysts to determine financial plans and inventory purchase amounts.  
+
+  
+
+**Features and Promos**: Develops and executes approved proposals for features across stores and online channels. Implements themes for monthly category features. Supports decisions on recommended modular strategies.  
+
+  
+
+**Modular \& Assortment**: Supports the implementation of modular layout principles for a category along with the modular team. Supports walkthrough execution, owns necessary adjustments based on post\-walkthrough analysis, and makes recommendations. Supports decisions on corporate quantities of committed\-buy and allocated items and quantities to be shared. Advises on sharing of items and item replenishment. Supports determination of the finalized modulars.  
+
+  
+
+**Category Administration**: Supports merchants with the resolution of supplier issues and supports the setup of new suppliers for stores and online. Obtains missing, item\-related information from suppliers and/or distributors to ensure items are correctly set up. Supports activity planning, store trainings, and store communications.  
+
+  
+
+**Business Execution**: Supports the execution of business plans and projects by identifying customer and operational needs. developing and communicating. Develops and communicates business plans and priorities. Removes barriers and obstacles that impact performance. Provides resources Identifies performance standards. Measures progress and adjusts performance accordingly. Develops contingency plans. Demonstrates adaptability and supports continuous learning.  
+
+  
+
+**Strategic Initiative Support**: Executes key business strategies and communication platforms by managing cross\-functional initiatives that impact store and corporate processes. Manages merchandising programs and initiatives, customer and company communications, and associate training content. Makes recommendations for system support developments. Recommends merchandise priorities. Provides insight to senior management and other business partners on key issues and opportunities to drive the business. Translates merchandise strategies for assigned departments into executable programs.
+
+**Office Environment:** Corporate, in\-person internship
+
+**U.S. Hub Locations:** Bentonville, AR
+
+**Desired Majors:** General Business, Retail/Buying, Merchandising, Economics, Accounting/Finance, Marketing, Supply Chain, Entrepreneurship
+
+**Minimum Qualifications:**
+
+* Must be enrolled in a Bachelor’s degree program currently
+* Expected graduation date between December 2026 \- May 2027
+
+**Housing and relocation available for those living outside a 50\-mile radius of the Walmart Home Office**
+
+**IMMIGRATION SPONSORSHIP IS NOT AVAILABLE FOR THIS ROLE**
+
+
+""\#ECMerch""
+
+
+At Walmart, we offer competitive pay and other great benefits for a happier mind, body, and wallet!
+‎
+
+
+For information about benefits and eligibility, see One.Walmart.
+
+
+‎
+
+
+The hourly wage range for this position is $19\.00\-$35\.00\*
+‎
+
+* The actual hourly rate will equal or exceed the required minimum wage applicable to the job location.
+
+**Minimum Qualifications...**
+-----------------------------
+
+*Outlined below are the required minimum qualifications for this position. If none are listed, there are no minimum qualifications.*
+
+**Preferred Qualifications...**
+-------------------------------
+
+*Outlined below are the optional preferred qualifications for this position. If none are listed, there are no preferred qualifications.*
+
+**Primary Location...**
+-----------------------
+
+
+702 Sw 8Th St, Bentonville, AR 72716, United States of America",,https://www.indeed.com/cmp/Walmart,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/81872361234125a30d818f132d5fa3f8,https://careers.walmart.com,"Bentonville, AR","10,000+",more than $10B (USD),"Headquartered in Bentonville, Arkansas, Walmart is a multinational corporation that operates the largest chain of department stores globally.",,,,,,
+in-8c72473f113bfa43,indeed,https://www.indeed.com/viewjob?jk=8c72473f113bfa43,https://click.appcast.io/t/ldd6cI8MlHfQRAkdaZzjW3rTJ7b9biHyeL0tXTZPD7c=,"(USA) Senior Manager, Business Operations eCommerce",Walmart,"Bentonville, AR, US",2025-06-25,,direct_data,yearly,90000.0,180000.0,USD,False,,,,,"**Position Summary...**
+-----------------------
+
+**What you'll do...**
+---------------------
+
+**This role is based onsite in Bentonville, AR. Please only apply if open to relocation.**
+
+
+Want to help lead the way in redefining how we shop online? The Senior Manager of Business Operations ; Digital Strategy \- eCommerce will be a critical leader in enhancing our sites performance and driving a frictionless customer experience. This person will set the bar for eCommerce business performance, initiative prioritization and operational excellence, by improving the agility and focus of the Site Merchandising team. They will help define and improve OKRs, drive transparency around performance, inform and manage the tech roadmap and requirements, and identify opportunities and scalable best practices. Theyll drive impact, improvement, and innovation to create a truly frictionless online shopping experience and help our eCommerce business.
+
+**Youll sweep us off our feet if:**
+
+* You understand how customers shop online and use strategic thinking and innovation to create a seamless and fresh site experience for our customers.
+* You have an incredible focus on operational excellence and getting the fundamentals right and can identify opportunities for efficiency and improvement through clearly defined performance metrics and dash boarding.
+* You build trust quickly and can lead by influence, creating impact through partnership as well as ownership.
+* You believe in and prioritize the collective success of the team and are quick to jump in, help, mentor, and coach your fellow team members.
+* You use data and insights to make informed and impactful decisions that inform prioritization, and you have the acumen to translate complex data into actions and improvements.
+* You have experience building business cases, identifying white space opportunities, presenting to executive stakeholders, and managing technology roadmaps and requirements.
+
+**Youll make an impact by:**
+
+* Monitoring site health and performance through analytics and key metrics â€“ Youll lead internal business reviews and oversee the development of site metrics and dashboards to monitor site health and track performance, providing strategic insights to the Site Merchandising team to influence the overall direction for the site.
+* Operating with excellence â€“ Youll help define best\-in\-class efficient workflows and reports with key performance metrics, embedding operational excellence and focus on data into everything you do and developing associates on the team to increase capabilities and enhance skills, knowledge and performance.
+* Structuring complex and ambiguous strategic problems â€“ Youll continuously analyze our eCommerce business and develop and implement site strategies to improve the end\-to\-end customer journey, driving innovation and growth. Youll develop hypotheses, translating data into actionable insights and recommendations, to inform our overall market position and identify site priorities.
+* Becoming an invaluable strategic partner to internal stakeholders â€“ Youll advise on and partner with various internal teams to improve processes, identify opportunities, and scale best practice and governance, driving continual assessment and improvement of the sites strategic direction and execution.
+* Informing our Home Ecommerce technology roadmap â€“ Youll partner with Product and Tech teams to support site feature prioritization, requirements, and builds.
+
+**Minimum Qualifications**
+
+* Bachelors degree in information technology, computer science, or related area and 5 years experience in eCommerce merchandising, site operations, business management, or related area.
+* 7 years experience in eCommerce merchandising, site operations, business management, or related area.
+* 2 years supervisory experience.
+
+**Preferred Qualifications**
+
+* Eight years related experience in Management Consulting, Business Operations, Product Management, Site Merchandising, Analytics or related field
+* Masters Degree in Business or related field
+* 4\+ years demonstrated experience managing a team
+* 4\+ years of experience in consumer\-focused e\-commerce environment
+* Strong customer obsession focused on building the right site experience for our customer
+* Strategic mindset with ability to tackle complex and ambiguous problems
+* Analytical and process\-oriented, comfortable making data\-driven decisions, and thirst for continuous improvement
+* Experience developing and executing against technical product roadmaps
+* Ability to set clear team objectives and performance measures
+* Ability to select and develop a team of future leaders
+* Demonstrated ability to work as part of a cross\-functional team and willingness to take on responsibilities outside primary job description when necessary
+* Assertive, adaptable and demonstrates initiative in a fast\-paced environment with competing priorities
+
+
+The above information has been designed to indicate the general nature and level of work performed in the role. It is not designed to contain or be interpreted as a comprehensive inventory of all duties, responsibilities and qualifications required of employees assigned to this job. The full Job Description can be made available as part of the hiring process.
+
+**Perks and Benefits**
+
+
+Beyond competitive pay, you can receive incentive awards for your performance. Other great perks include 401(k) match, stock purchase plan, paid parental leave, PTO, multiple health plans, and much more.
+
+**Who We Are**
+
+
+Join Walmart and your work could help over 275 million global customers live better every week. Yes, we are the Fortune \#1 company. But you'll quickly find were a company who wants you to feel comfortable bringing your whole self to work. A career at Walmart is where the worlds most complex challenges meet a kinder way of life. Our mission spreads far beyond the walls of our stores. Join us and you'll discover why we are a world leader in a culture of belonging, sustainability, and community involvement. From day one, you'll be empowered and equipped to do the best work of your life.
+
+
+Walmart, Inc. is an Equal Opportunity Employer – “ By Choice. We believe we are best equipped to help our associates, customers and the communities we serve live better when
+
+
+At Walmart, we offer competitive pay as well as performance\-based bonus awards and other great benefits for a happier mind, body, and wallet. Health benefits include medical, vision and dental coverage. Financial benefits include 401(k), stock purchase and company\-paid life insurance. Paid time off benefits include PTO (including sick leave), parental leave, family care leave, bereavement, jury duty, and voting. Other benefits include short\-term and long\-term disability, company discounts, Military Leave Pay, adoption and surrogacy expense reimbursement, and more.
+‎
+
+
+‎
+
+
+‎
+
+
+You will also receive PTO and/or PPTO that can be used for vacation, sick leave, holidays, or other purposes. The amount you receive depends on your job classification and length of employment. It will meet or exceed the requirements of paid sick leave laws, where applicable.
+‎
+
+
+For information about PTO, see https://one.walmart.com/notices.
+
+
+‎
+
+
+‎
+
+
+Live Better U is a Walmart\-paid education benefit program for full\-time and part\-time associates in Walmart and Sam's Club facilities. Programs range from high school completion to bachelor's degrees, including English Language Learning and short\-form certificates. Tuition, books, and fees are completely paid for by Walmart.
+‎
+
+
+Eligibility requirements apply to some benefits and may depend on your job classification and length of employment. Benefits are subject to change and may be subject to a specific plan or program terms.
+‎
+
+
+For information about benefits and eligibility, see One.Walmart.
+
+
+‎
+
+
+The annual salary range for this position is $90,000\.00\-$180,000\.00
+‎
+
+
+Additional compensation includes annual or quarterly performance bonuses.
+‎
+
+
+Additional compensation for certain positions may also include:
+‎
+
+
+‎
+
+* Stock
+
+
+‎
+
+
+‎
+
+**Minimum Qualifications...**
+-----------------------------
+
+*Outlined below are the required minimum qualifications for this position. If none are listed, there are no minimum qualifications.*
+
+Bachelor's degree in information technology, computer science, or related area and 5 years’ experience in eCommerce merchandising, site operations, business management, or related area OR 7 years’ experience in eCommerce merchandising, site operations, business management, information technology, computer science or related area.  
+
+2 years’ supervisory experience.**Preferred Qualifications...**
+-------------------------------
+
+*Outlined below are the optional preferred qualifications for this position. If none are listed, there are no preferred qualifications.*
+
+
+ECommerce Merchandising, Site Operations, Business Management, or related area, Master's degree in Information Technology, Computer Science, or related area**Primary Location...**
+-----------------------
+
+
+702 Sw 8Th St, Bentonville, AR 72716, United States of America",,https://www.indeed.com/cmp/Walmart,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/81872361234125a30d818f132d5fa3f8,https://careers.walmart.com,"Bentonville, AR","10,000+",more than $10B (USD),"Headquartered in Bentonville, Arkansas, Walmart is a multinational corporation that operates the largest chain of department stores globally.",,,,,,
