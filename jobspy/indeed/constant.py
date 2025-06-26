@@ -97,6 +97,106 @@ job_search_query = """
     }}
     """
 
+company_job_search_query = """
+    query GetCompanyJobData {{
+        jobSearch(
+        {what}
+        {location}
+        limit: 100
+        {cursor}
+        sort: RELEVANCE
+        {filters}
+        employerId: "{company_id}"
+        ) {{
+        pageInfo {{
+            nextCursor
+        }}
+        results {{
+            trackingKey
+            job {{
+            source {{
+                name
+            }}
+            key
+            title
+            datePublished
+            dateOnIndeed
+            description {{
+                html
+            }}
+            location {{
+                countryName
+                countryCode
+                admin1Code
+                city
+                postalCode
+                streetAddress
+                formatted {{
+                short
+                long
+                }}
+            }}
+            compensation {{
+                estimated {{
+                currencyCode
+                baseSalary {{
+                    unitOfWork
+                    range {{
+                    ... on Range {{
+                        min
+                        max
+                    }}
+                    }}
+                }}
+                }}
+                baseSalary {{
+                unitOfWork
+                range {{
+                    ... on Range {{
+                    min
+                    max
+                    }}
+                }}
+                }}
+                currencyCode
+            }}
+            attributes {{
+                key
+                label
+            }}
+            employer {{
+                relativeCompanyPageUrl
+                name
+                dossier {{
+                    employerDetails {{
+                    addresses
+                    industry
+                    employeesLocalizedLabel
+                    revenueLocalizedLabel
+                    briefDescription
+                    ceoName
+                    ceoPhotoUrl
+                    }}
+                    images {{
+                        headerImageUrl
+                        squareLogoUrl
+                    }}
+                    links {{
+                    corporateWebsite
+                }}
+                }}
+            }}
+            recruit {{
+                viewJobUrl
+                detailedSalary
+                workSchedule
+            }}
+            }}
+        }}
+        }}
+    }}
+    """
+
 api_headers = {
     "Host": "apis.indeed.com",
     "content-type": "application/json",

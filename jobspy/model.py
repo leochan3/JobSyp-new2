@@ -312,6 +312,7 @@ class ScraperInput(BaseModel):
     offset: int = 0
     linkedin_fetch_description: bool = False
     linkedin_company_ids: list[int] | None = None
+    indeed_company_id: str | None = None
     description_format: DescriptionFormat | None = DescriptionFormat.MARKDOWN
 
     results_wanted: int = 15

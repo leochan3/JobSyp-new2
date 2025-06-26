@@ -36,6 +36,22 @@ jobs = scrape_jobs(
     # linkedin_fetch_description=True # gets more info such as description, direct job url (slower)
     # proxies=["208.195.175.46:65095", "208.195.175.45:65095", "localhost"],
 )
+
+# Company-specific scraping examples:
+# Scrape all jobs from Uber on Indeed
+uber_jobs = scrape_jobs(
+    site_name=["indeed"],
+    indeed_company_id="Uber",
+    results_wanted=100
+)
+
+# Scrape jobs from specific companies on LinkedIn
+company_jobs = scrape_jobs(
+    site_name=["linkedin"],
+    linkedin_company_ids=[12345, 67890],
+    results_wanted=50
+)
+
 print(f"Found {len(jobs)} jobs")
 print(jobs.head())
 jobs.to_csv("jobs.csv", quoting=csv.QUOTE_NONNUMERIC, escapechar="\\", index=False) # to_excel
@@ -48,7 +64,7 @@ SITE           TITLE                             COMPANY           CITY         
 indeed         Software Engineer                 AMERICAN SYSTEMS  Arlington     VA     None      yearly    200000      150000      https://www.indeed.com/viewjob?jk=5e409e577046...  THIS POSITION COMES WITH A 10K SIGNING BONUS!...
 indeed         Senior Software Engineer          TherapyNotes.com  Philadelphia  PA     fulltime  yearly    135000      110000      https://www.indeed.com/viewjob?jk=da39574a40cb...  About Us TherapyNotes is the national leader i...
 linkedin       Software Engineer - Early Career  Lockheed Martin   Sunnyvale     CA     fulltime  yearly    None        None        https://www.linkedin.com/jobs/view/3693012711      Description:By bringing together people that u...
-linkedin       Full-Stack Software Engineer      Rain              New York      NY     fulltime  yearly    None        None        https://www.linkedin.com/jobs/view/3696158877      Rain’s mission is to create the fastest and ea...
+linkedin       Full-Stack Software Engineer      Rain              New York      NY     fulltime  yearly    None        None        https://www.linkedin.com/jobs/view/3696158877      Rain's mission is to create the fastest and ea...
 zip_recruiter Software Engineer - New Grad       ZipRecruiter      Santa Monica  CA     fulltime  yearly    130000      150000      https://www.ziprecruiter.com/jobs/ziprecruiter...  We offer a hybrid work environment. Most US-ba...
 zip_recruiter Software Developer                 TEKsystems        Phoenix       AZ     fulltime  hourly    65          75          https://www.ziprecruiter.com/jobs/teksystems-0...  Top Skills' Details• 6 years of Java developme...
 
@@ -107,9 +123,12 @@ Optional
 ├── linkedin_company_ids (list[int]): 
 |    searches for linkedin jobs with specific company ids
 |
+├── indeed_company_id (str): 
+|    searches for indeed jobs from a specific company (e.g., "Uber" for https://www.indeed.com/cmp/Uber/jobs)
+|
 ├── country_indeed (str): 
 |    filters the country on Indeed & Glassdoor (see below for correct spelling)
-|
+│
 ├── enforce_annual_salary (bool): 
 |    converts wages to annual salary
 |

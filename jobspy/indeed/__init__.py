@@ -4,7 +4,7 @@ import math
 from datetime import datetime
 from typing import Tuple
 
-from jobspy.indeed.constant import job_search_query, api_headers
+from jobspy.indeed.constant import job_search_query, company_job_search_query, api_headers
 from jobspy.indeed.util import is_job_remote, get_compensation, get_job_type
 from jobspy.model import (
     Scraper,
@@ -89,11 +89,17 @@ class Indeed(Scraper):
         jobs = []
         new_cursor = None
         filters = self._build_filters()
-        search_term = (
-            self.scraper_input.search_term.replace('"', '\\"')
-            if self.scraper_input.search_term
-            else ""
-        )
+        
+        # Handle company-specific search using company: syntax
+        if self.scraper_input.indeed_company_id:
+            search_term = f"company:{self.scraper_input.indeed_company_id}"
+        else:
+            search_term = (
+                self.scraper_input.search_term.replace('"', '\\"')
+                if self.scraper_input.search_term
+                else ""
+            )
+        
         query = job_search_query.format(
             what=(f'what: "{search_term}"' if search_term else ""),
             location=(
@@ -105,6 +111,7 @@ class Indeed(Scraper):
             cursor=f'cursor: "{cursor}"' if cursor else "",
             filters=filters,
         )
+            
         payload = {
             "query": query,
         }
