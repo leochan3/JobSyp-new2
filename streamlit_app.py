@@ -78,137 +78,125 @@ def smart_job_search(jobs_df, search_query, threshold=60):
         return jobs_df
     
     search_query = search_query.lower().strip()
-    synonyms = create_job_synonyms()
+    search_words = search_query.split()
     
-    # Get related terms for the search query
-    related_terms = []
-    for key, terms in synonyms.items():
-        if search_query in key or any(term in search_query.split() for term in terms):
-            related_terms.extend(terms)
+    # Simple but effective approach: filter jobs that contain the search terms
+    filtered_jobs = []
     
-    # Remove duplicates and add original query
-    search_terms = list(set([search_query] + related_terms))
-    
-    # Score each job based on title relevance
-    job_scores = []
     for idx, job in jobs_df.iterrows():
         job_title = str(job['title']).lower()
         
-        # Start with exact match check - highest priority
-        final_score = 0
-        
-        # Check for exact phrase match (highest score)
+        # For exact phrase search
         if search_query in job_title:
-            final_score = 100
-        # Check for exact word matches in original query
-        elif all(word in job_title for word in search_query.split()):
-            final_score = 95
-        # Check if any word from original query matches
-        elif any(word in job_title for word in search_query.split()):
-            final_score = 85
-        else:
-            # Only check synonyms if no direct match
-            # Calculate fuzzy match scores for related terms only
-            scores = []
-            for term in search_terms[1:]:  # Skip original query, already checked
-                # Use different fuzzy matching methods
-                ratio_score = fuzz.ratio(term, job_title)
-                partial_score = fuzz.partial_ratio(term, job_title)
-                token_score = fuzz.token_sort_ratio(term, job_title)
-                
-                # Take the highest score among the three methods
-                best_score = max(ratio_score, partial_score, token_score)
-                scores.append(best_score)
-            
-            # Take the highest score among all search terms
-            final_score = max(scores) if scores else 0
-            
-            # Add bonus for partial word matches with synonyms
-            if any(term in job_title for term in search_terms[1:]):
-                final_score = min(80, final_score + 15)
-        
-        job_scores.append((idx, final_score))
-    
-    # Filter jobs above threshold and sort by score - use much stricter threshold
-    relevant_jobs = [(idx, score) for idx, score in job_scores if score >= 80]
-    relevant_jobs.sort(key=lambda x: x[1], reverse=True)
+            filtered_jobs.append(job)
+        # For multi-word search, require ALL words to be present
+        elif len(search_words) > 1 and all(word in job_title for word in search_words):
+            filtered_jobs.append(job)
+        # For single word search
+        elif len(search_words) == 1 and search_words[0] in job_title:
+            filtered_jobs.append(job)
     
     # Return filtered dataframe
-    if relevant_jobs:
-        relevant_indices = [idx for idx, _ in relevant_jobs]
-        return jobs_df.iloc[relevant_indices].reset_index(drop=True)
+    if filtered_jobs:
+        return pd.DataFrame(filtered_jobs).reset_index(drop=True)
     else:
-        # If no results with high threshold, try with lower threshold but still reasonable
-        relevant_jobs = [(idx, score) for idx, score in job_scores if score >= 70]
-        relevant_jobs.sort(key=lambda x: x[1], reverse=True)
-        if relevant_jobs:
-            relevant_indices = [idx for idx, _ in relevant_jobs]
-            return jobs_df.iloc[relevant_indices].reset_index(drop=True)
-        # If still no results, return empty dataframe
         return pd.DataFrame(columns=jobs_df.columns)
 
-def scrape_multiple_companies(companies, location, hours_old, results_wanted):
-    """Create a mapping of job title synonyms and related terms"""
-    synonyms = {
-        # Product/Program Management
-        'product manager': ['product manager', 'program manager', 'product owner', 'pm'],
-        'program manager': ['program manager', 'product manager', 'project manager', 'pm'],
-        'project manager': ['project manager', 'program manager', 'product manager', 'pm'],
-        
-        # Software Engineering
-        'software engineer': ['software engineer', 'developer', 'programmer', 'software developer', 'engineer'],
-        'developer': ['developer', 'software engineer', 'programmer', 'software developer', 'engineer'],
-        'programmer': ['programmer', 'developer', 'software engineer', 'software developer'],
-        'engineer': ['engineer', 'software engineer', 'developer', 'programmer'],
-        
-        # Data roles
-        'data scientist': ['data scientist', 'data analyst', 'analytics', 'data engineer'],
-        'data analyst': ['data analyst', 'data scientist', 'analytics', 'business analyst'],
-        'data engineer': ['data engineer', 'data scientist', 'analytics engineer'],
-        
-        # Design roles
-        'designer': ['designer', 'ux designer', 'ui designer', 'product designer', 'graphic designer'],
-        'ux designer': ['ux designer', 'ui designer', 'product designer', 'designer'],
-        'ui designer': ['ui designer', 'ux designer', 'product designer', 'designer'],
-        
-        # Marketing roles
-        'marketing manager': ['marketing manager', 'marketing', 'digital marketing', 'marketing specialist'],
-        'marketing': ['marketing', 'marketing manager', 'digital marketing', 'marketing specialist'],
-        
-        # Sales roles
-        'sales': ['sales', 'account manager', 'sales manager', 'sales representative'],
-        'account manager': ['account manager', 'sales', 'sales manager', 'customer success'],
-        
-        # Operations roles
-        'operations': ['operations', 'ops', 'operations manager', 'business operations'],
-        'ops': ['ops', 'operations', 'operations manager', 'business operations'],
-        
-        # Finance roles
-        'analyst': ['analyst', 'financial analyst', 'business analyst', 'data analyst'],
-        'financial analyst': ['financial analyst', 'analyst', 'finance', 'business analyst'],
-        
-        # HR roles
-        'hr': ['hr', 'human resources', 'recruiter', 'talent acquisition'],
-        'recruiter': ['recruiter', 'hr', 'human resources', 'talent acquisition'],
-        
-        # Customer roles
-        'customer success': ['customer success', 'account manager', 'customer support'],
-        'customer support': ['customer support', 'customer success', 'support'],
+def ai_filter_jobs(jobs_df, user_target):
+    """
+    Real AI-powered job filtering using OpenAI GPT-4.1-nano (new API)
+    Returns filtered jobs based on semantic relevance to the user's target, with explanations
+    """
+    if not user_target or user_target.strip() == "":
+        return jobs_df
+    
+    import openai
+    client = openai.OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+    model = "gpt-4.1-nano"
+    filtered_jobs = []
+    
+    # Live log placeholder
+    log_placeholder = st.empty()
+    log_lines = ["🤖 AI is analyzing job titles for relevance..."]
+    
+    with st.spinner("🤖 AI is analyzing job titles for relevance..."):
+        for idx, job in jobs_df.iterrows():
+            job_title = str(job['title'])
+            prompt = (
+                f"A user is interested in jobs related to: '{user_target}'. "
+                f"Is the job title '{job_title}' relevant to this interest? "
+                f"Answer 'yes' or 'no', and briefly explain your reasoning in one sentence."
+            )
+            try:
+                response = client.chat.completions.create(
+                    model=model,
+                    messages=[{"role": "user", "content": prompt}],
+                    max_tokens=50,
+                    temperature=0
+                )
+                ai_response = response.choices[0].message.content.strip()
+                # Try to split into answer and explanation
+                if '-' in ai_response:
+                    answer, explanation = ai_response.split('-', 1)
+                elif ':' in ai_response:
+                    answer, explanation = ai_response.split(':', 1)
+                else:
+                    answer, explanation = ai_response, ''
+                answer = answer.strip().lower()
+                explanation = explanation.strip()
+                if answer.startswith('yes'):
+                    filtered_jobs.append(job)
+                    log_lines.append(f"<span style='color:limegreen'>Job: <b>{job_title}</b> — AI: <b>yes</b> (KEPT)<br>Reason: {explanation}</span>")
+                else:
+                    log_lines.append(f"<span style='color:#ff6666'>Job: <b>{job_title}</b> — AI: <b>no</b> (FILTERED)<br>Reason: {explanation}</span>")
+            except Exception as e:
+                log_lines.append(f"<span style='color:orange'>Job: <b>{job_title}</b> — AI error: {e}</span>")
+                continue
+            # Update the log live
+            log_placeholder.markdown("<br>".join(log_lines), unsafe_allow_html=True)
+    
+    # Final log update
+    log_placeholder.markdown("<br>".join(log_lines), unsafe_allow_html=True)
+    
+    if filtered_jobs:
+        return pd.DataFrame(filtered_jobs).reset_index(drop=True)
+    else:
+        return pd.DataFrame(columns=jobs_df.columns)
+
+def get_related_terms(keyword):
+    """
+    Simple related terms mapping for demo
+    In production, this would use more sophisticated AI/NLP
+    """
+    related_map = {
+        'data': ['analyst', 'science', 'scientist', 'analytics', 'engineer'],
+        'software': ['developer', 'engineer', 'programming', 'coding', 'development'],
+        'product': ['manager', 'management', 'owner', 'lead'],
+        'machine': ['learning', 'ml', 'ai', 'artificial'],
+        'python': ['programming', 'developer', 'engineer', 'coding'],
+        'marketing': ['digital', 'growth', 'brand', 'campaign'],
+        'sales': ['business', 'development', 'account', 'revenue'],
+        'design': ['ui', 'ux', 'graphic', 'visual', 'creative'],
+        'finance': ['financial', 'accounting', 'analyst', 'investment'],
+        'operations': ['ops', 'operational', 'logistics', 'supply']
     }
-    return synonyms
+    
+    return related_map.get(keyword, [])
 
 def scrape_multiple_companies(companies, location, hours_old, results_wanted):
-    """Scrape jobs for multiple companies and combine results"""
+    """Scrape jobs for multiple companies with smart time-based splitting for high-volume companies"""
     all_jobs = []
     
+    # Create progress tracking
     progress_bar = st.progress(0)
     status_text = st.empty()
     
-    for i, company in enumerate(companies, 1):
-        status_text.text(f"Scraping {company}... ({i}/{len(companies)})")
+    for i, company in enumerate(companies):
+        status_text.text(f"Scraping {company}... ({i+1}/{len(companies)})")
         
         try:
-            jobs = scrape_jobs(
+            # First, try a regular search to detect if company has many jobs
+            initial_jobs = scrape_jobs(
                 site_name=['indeed'],
                 indeed_company_id=company,
                 location=location,
@@ -217,21 +205,102 @@ def scrape_multiple_companies(companies, location, hours_old, results_wanted):
                 verbose=0
             )
             
-            # Add company info to track which company each job came from
-            jobs['search_company'] = company
-            
-            # Check company accuracy
-            company_jobs = jobs[jobs['company'].str.contains(company, case=False, na=False)]
-            accuracy = len(company_jobs) / len(jobs) * 100 if len(jobs) > 0 else 0
-            
-            st.success(f"✅ {company}: {len(jobs)} jobs (Accuracy: {accuracy:.1f}%)")
-            all_jobs.append(jobs)
-            
+            # If we got close to 1000 jobs, this company likely has more jobs available
+            # Use time-based splitting to get comprehensive results
+            if len(initial_jobs) >= 950:  # Close to 1000 indicates more jobs available
+                st.info(f"🔄 {company} has many jobs ({len(initial_jobs)}), using time-based search for comprehensive results...")
+                
+                # Time-based splitting with 24-hour windows up to 2 weeks
+                time_ranges = [
+                    (None, 24, "Last 24 hours"),
+                    (24, 48, "24-48 hours"),
+                    (48, 72, "48-72 hours"),
+                    (72, 96, "72-96 hours"),
+                    (96, 120, "96-120 hours"),
+                    (120, 144, "120-144 hours"),
+                    (144, 168, "144-168 hours"),
+                    (168, 192, "168-192 hours"),
+                    (192, 216, "192-216 hours"),
+                    (216, 240, "216-240 hours"),
+                    (240, 264, "240-264 hours"),
+                    (264, 288, "264-288 hours"),
+                    (288, 312, "288-312 hours"),
+                    (312, 336, "312-336 hours (2 weeks)"),
+                    (336, None, "Older than 2 weeks")
+                ]
+                
+                company_jobs = []
+                # Create a compact progress display
+                progress_placeholder = st.empty()
+                detailed_progress = st.expander(f"📊 Detailed Progress for {company}", expanded=False)
+                
+                completed_ranges = 0
+                total_ranges = len(time_ranges)
+                
+                for start_hours, end_hours, range_name in time_ranges:
+                    try:
+                        # Update compact progress
+                        progress_placeholder.text(f"⏳ Searching {range_name}... ({completed_ranges + 1}/{total_ranges})")
+                        
+                        range_jobs = scrape_jobs(
+                            site_name=['indeed'],
+                            indeed_company_id=company,
+                            location=location,
+                            results_wanted=results_wanted,
+                            hours_old=end_hours,
+                            verbose=0
+                        )
+                        if len(range_jobs) > 0:
+                            range_jobs['time_range'] = range_name
+                            company_jobs.append(range_jobs)
+                            # Show detailed progress in expander
+                            with detailed_progress:
+                                st.write(f"  📅 {range_name}: {len(range_jobs)} jobs")
+                        else:
+                            with detailed_progress:
+                                st.write(f"  📅 {range_name}: 0 jobs")
+                                
+                        completed_ranges += 1
+                        
+                    except Exception as e:
+                        with detailed_progress:
+                            st.warning(f"  ⚠️ Error in {range_name}: {e}")
+                        completed_ranges += 1
+                        continue
+                
+                # Clear the progress text
+                progress_placeholder.empty()
+                
+                if company_jobs:
+                    # Combine and deduplicate
+                    combined_company_jobs = pd.concat(company_jobs, ignore_index=True)
+                    # Remove duplicates within this company's results
+                    combined_company_jobs = combined_company_jobs.drop_duplicates(subset=['job_url', 'title'], keep='first')
+                    combined_company_jobs['search_company'] = company
+                    
+                    total_jobs = len(combined_company_jobs)
+                    st.success(f"✅ {company}: {total_jobs} jobs (time-based search)")
+                    all_jobs.append(combined_company_jobs)
+                else:
+                    # Fallback to initial results if time-based search failed
+                    initial_jobs['search_company'] = company
+                    company_jobs = initial_jobs[initial_jobs['company'].str.contains(company, case=False, na=False)]
+                    accuracy = len(company_jobs) / len(initial_jobs) * 100 if len(initial_jobs) > 0 else 0
+                    st.success(f"✅ {company}: {len(initial_jobs)} jobs (fallback, Accuracy: {accuracy:.1f}%)")
+                    all_jobs.append(initial_jobs)
+            else:
+                # Company has fewer jobs, use the simple single search result
+                initial_jobs['search_company'] = company
+                company_jobs = initial_jobs[initial_jobs['company'].str.contains(company, case=False, na=False)]
+                accuracy = len(company_jobs) / len(initial_jobs) * 100 if len(initial_jobs) > 0 else 0
+                st.success(f"✅ {company}: {len(initial_jobs)} jobs (simple search, Accuracy: {accuracy:.1f}%)")
+                all_jobs.append(initial_jobs)
+                
         except Exception as e:
             st.error(f"❌ Error scraping {company}: {e}")
             continue
         
-        progress_bar.progress(i / len(companies))
+        progress_bar.progress((i + 1) / len(companies))
     
     progress_bar.empty()
     status_text.empty()
@@ -239,6 +308,23 @@ def scrape_multiple_companies(companies, location, hours_old, results_wanted):
     # Combine all results
     if all_jobs:
         combined_jobs = pd.concat(all_jobs, ignore_index=True)
+        
+        # Remove duplicates across all companies
+        total_before_dedup = len(combined_jobs)
+        combined_jobs = combined_jobs.drop_duplicates(subset=['job_url', 'title'], keep='first')
+        total_after_dedup = len(combined_jobs)
+        duplicates_removed = total_before_dedup - total_after_dedup
+        
+        # Show compact summary
+        if duplicates_removed > 0:
+            st.success(f"✅ **{total_after_dedup} unique jobs found** ({duplicates_removed} duplicates removed from {total_before_dedup} total)")
+        else:
+            st.success(f"✅ **{total_after_dedup} unique jobs found** (no duplicates)")
+        
+        # Sort by date posted (newest first)
+        combined_jobs['date_posted'] = pd.to_datetime(combined_jobs['date_posted'], errors='coerce')
+        combined_jobs = combined_jobs.sort_values('date_posted', ascending=False)
+        
         return combined_jobs
     else:
         return pd.DataFrame()
@@ -292,8 +378,31 @@ def display_job_data_table(jobs_df, jobs_per_page=15):
         search_query = st.text_input(
             "🔍 Search Job Titles", 
             placeholder="e.g., product manager, software engineer, data scientist",
-            help="Smart search with synonyms (e.g., 'developer' finds 'engineer' jobs)"
+            help="Smart search with synonyms (e.g., 'developer' finds 'engineer' jobs)",
+            key="job_title_search"
         )
+        
+        # Add AI-powered job filtering
+        ai_target = st.text_input(
+            "🤖 AI Job Filter (Beta)", 
+            placeholder="e.g., I want data science roles with Python and machine learning",
+            help="Describe your ideal job - AI will filter and rank jobs based on relevance to your target",
+            key="ai_target_input"
+        )
+        
+        # AI Filter controls
+        if ai_target and ai_target.strip():
+            ai_col1, ai_col2, ai_col3 = st.columns([1, 1, 4])
+            with ai_col1:
+                if st.button("🤖 Apply AI Filter", key="apply_ai_filter"):
+                    st.session_state.ai_filter_applied = True
+                    st.session_state.ai_target = ai_target.strip()
+                    st.rerun()
+            with ai_col2:
+                if st.button("Clear AI Filter", key="clear_ai_filter"):
+                    st.session_state.ai_filter_applied = False
+                    st.session_state.ai_target = ""
+                    st.rerun()
         
         filter_col1, filter_col2, filter_col3, filter_col4, filter_col5 = st.columns(5)
         
@@ -301,14 +410,18 @@ def display_job_data_table(jobs_df, jobs_per_page=15):
         reset_filters = st.session_state.get('clear_filters_flag', False)
 
         with filter_col1:
-            company_options = ['All'] + sorted(jobs_df['company'].unique().tolist())
+            # Handle NaN values in company column
+            company_values = jobs_df['company'].fillna('Unknown').unique().tolist()
+            company_options = ['All'] + sorted([str(c) for c in company_values])
             selected_company = st.selectbox(
                 "Company", company_options,
                 index=0 if reset_filters else company_options.index(st.session_state.get('company_filter', 'All')),
                 key="company_filter"
             )
         with filter_col2:
-            location_options = ['All'] + sorted(jobs_df['location'].unique().tolist())
+            # Handle NaN values in location column
+            location_values = jobs_df['location'].fillna('Unknown').unique().tolist()
+            location_options = ['All'] + sorted([str(l) for l in location_values])
             selected_location = st.selectbox(
                 "Location", location_options,
                 index=0 if reset_filters else location_options.index(st.session_state.get('location_filter', 'All')),
@@ -337,9 +450,43 @@ def display_job_data_table(jobs_df, jobs_per_page=15):
         if reset_filters:
             st.session_state.clear_filters_flag = False
         # Place Clear Filters button below filters, left-aligned
-        if st.button("Clear Filters", key="clear_filters"):
-            st.session_state.clear_filters_flag = True
-            st.rerun()
+        filter_action_col1, filter_action_col2, filter_action_col3 = st.columns([1, 1, 4])
+        
+        with filter_action_col1:
+            if st.button("Clear Filters", key="clear_filters"):
+                st.session_state.clear_filters_flag = True
+                st.rerun()
+        
+        with filter_action_col2:
+            # Prepare CSV data for download (before filtering for full dataset option)
+            csv_data = jobs_df.copy()
+            # Add formatted salary column for CSV
+            csv_data['formatted_salary'] = csv_data.apply(format_salary, axis=1)
+            # Format date for CSV
+            csv_data['date_posted_formatted'] = pd.to_datetime(csv_data['date_posted']).dt.strftime('%Y-%m-%d')
+            
+            # Select relevant columns for CSV export
+            csv_columns = ['title', 'company', 'location', 'date_posted_formatted', 'formatted_salary', 
+                          'job_type', 'description', 'job_url_direct']
+            csv_export = csv_data[csv_columns].copy()
+            csv_export.columns = ['Job Title', 'Company', 'Location', 'Date Posted', 'Salary', 
+                                 'Job Type', 'Description', 'Job URL']
+            
+            # Convert to CSV
+            csv_string = csv_export.to_csv(index=False)
+            
+            # Generate filename with timestamp
+            from datetime import datetime
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            filename = f"jobs_export_{timestamp}.csv"
+            
+            st.download_button(
+                label="📥 Download CSV",
+                data=csv_string,
+                file_name=filename,
+                mime="text/csv",
+                help="Download all jobs as CSV file"
+            )
         
         # Apply filters
         filtered_df = jobs_df.copy()
@@ -351,6 +498,33 @@ def display_job_data_table(jobs_df, jobs_per_page=15):
                 st.warning(f"No jobs found matching '{search_query}'. Try different keywords or check spelling.")
                 return
         
+        # AI filter caching logic
+        ai_active = st.session_state.get('ai_filter_applied', False) and st.session_state.get('ai_target', '')
+        ai_target = st.session_state.get('ai_target', '')
+        ai_cache_key = f"ai_filtered_jobs_{hash(ai_target)}"
+
+        # Reset AI cache if filter is cleared or target changes
+        if not ai_active:
+            st.session_state.pop('ai_filtered_jobs', None)
+            st.session_state.pop('ai_cache_key', None)
+        elif st.session_state.get('ai_cache_key', None) != ai_cache_key:
+            st.session_state.pop('ai_filtered_jobs', None)
+
+        # Use cached AI results if available
+        if ai_active:
+            if 'ai_filtered_jobs' in st.session_state:
+                filtered_df = st.session_state['ai_filtered_jobs']
+            else:
+                with st.spinner("🤖 AI is analyzing job titles for relevance..."):
+                    filtered_df = ai_filter_jobs(filtered_df, ai_target)
+                    st.session_state['ai_filtered_jobs'] = filtered_df
+                    st.session_state['ai_cache_key'] = ai_cache_key
+                if len(filtered_df) == 0:
+                    st.warning(f"🤖 No jobs found matching your AI target: '{ai_target}'. Try different keywords or clear the AI filter.")
+                    return
+                else:
+                    st.info(f"🤖 AI filtered {len(filtered_df)} relevant jobs based on: '{ai_target}'")
+
         if selected_company != 'All':
             filtered_df = filtered_df[filtered_df['company'] == selected_company]
         
@@ -493,7 +667,9 @@ def display_job_data_table(jobs_df, jobs_per_page=15):
             cols[0].write(job['truncated_title'])
             cols[1].write(job['company'])
             cols[2].write(job['location'])
-            cols[3].write(str(job['date_posted']))
+            # Format date to show only the date part (YYYY-MM-DD)
+            date_str = pd.to_datetime(job['date_posted']).strftime('%Y-%m-%d') if pd.notna(job['date_posted']) else 'N/A'
+            cols[3].write(date_str)
             cols[4].markdown(f"<span style='font-family: inherit;'>{job['formatted_salary']}</span>", unsafe_allow_html=True)
             
             # Check if this job is currently selected
@@ -683,23 +859,20 @@ def main():
         )
         hours_old = None if hours_old == 0 else hours_old
         
-        # Results limit
-        results_wanted = st.number_input(
-            "Results per company",
-            min_value=1,
-            max_value=1000,
-            value=100,
-            help="Maximum jobs to fetch per company"
-        )
+        # Results limit (hidden from user, set to high default)
+        results_wanted = 5000
         
         # Search button
         search_button = st.button("🔍 Start Search", type="primary")
     
     # Main content area
     if search_button:
-        # Reset pagination and selected job when starting new search
+        # Reset pagination, selected job, and filters when starting new search
         st.session_state.current_page = 1
         st.session_state.selected_job = None
+        # Clear any existing job title search filter
+        if 'job_title_search' in st.session_state:
+            del st.session_state.job_title_search
         
         if not companies_input.strip():
             st.error("❌ Please enter at least one company")
@@ -713,16 +886,11 @@ def main():
         companies = [company.strip() for company in companies_input.split(',') if company.strip()]
         
         # Display search summary (compact)
-        st.markdown(f"**🎯 Search:** {len(companies)} companies in {location} | {f'{hours_old}h old' if hours_old else 'All time'} | {results_wanted} results per company")
+        st.markdown(f"**🎯 Search:** {len(companies)} companies in {location} | {f'{hours_old}h old' if hours_old else 'All time'} | Searching all available jobs")
         
-        # Start scraping
-        st.header("🔍 Scraping Jobs...")
-        api_key = os.environ.get("OPENAI_API_KEY")
-        if not api_key:
-            st.error("OpenAI API key not found. Please set the OPENAI_API_KEY environment variable.")
-            return
-        client = openai.OpenAI(api_key=api_key)
-        jobs = scrape_multiple_companies(companies, location, hours_old, results_wanted)
+        # Start scraping with progress indicator
+        with st.spinner("🔍 Scraping jobs..."):
+            jobs = scrape_multiple_companies(companies, location, hours_old, results_wanted)
         
         if len(jobs) == 0:
             st.error("❌ No jobs found for any company")
@@ -740,7 +908,13 @@ def main():
                 accuracy = len(accurate_jobs) / len(company_jobs) * 100
                 accuracies.append(accuracy)
         avg_accuracy = sum(accuracies) / len(accuracies) if accuracies else 0
-        st.success(f"**📊 Found {len(jobs)} jobs** from {len(jobs['search_company'].unique())} companies across {len(jobs['location'].unique())} locations (Accuracy: {avg_accuracy:.1f}%)")
+        
+        # Create collapsible search summary
+        with st.expander("📊 Search Summary", expanded=False):
+            st.success(f"**📊 Found {len(jobs)} jobs** from {len(jobs['search_company'].unique())} companies across {len(jobs['location'].unique())} locations (Accuracy: {avg_accuracy:.1f}%)")
+        
+        # Show main result briefly
+        st.success(f"✅ **Search Complete: {len(jobs)} jobs found**")
         
         # Job data section with pagination
         st.header("📋 Job Data")
@@ -761,22 +935,26 @@ def main():
         - ✅ Company-specific job filtering (100% accuracy)
         - ✅ Multi-company search
         - ✅ Time-based filtering
+        - ✅ Searches all available jobs (up to 5000 per company)
         - ✅ Clean paginated job table
         - ✅ LinkedIn-style job details sidebar
         - ✅ Proper salary formatting
+        - 🤖 **NEW: AI-powered job filtering and ranking**
         
         **How to use:**
         1. Enter company names (separated by commas)
         2. Specify location
-        3. Set time filter and results limit
+        3. Set time filter (optional)
         4. Click "Start Search"
         5. Browse through job results with Previous/Next
-        6. Click "View" to see job details in right panel
+        6. **NEW:** Use AI Job Filter to find jobs matching your target profile
+        7. Click "View" to see job details in right panel
         
         **Example:**
         - Companies: `Amazon, Walmart, Lyft`
         - Location: `Seattle, WA`
         - Hours old: `24` (for recent jobs)
+        - AI Filter: `I want data science roles with Python and machine learning`
         """)
 
 if __name__ == "__main__":
