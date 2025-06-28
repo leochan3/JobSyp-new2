@@ -102,64 +102,156 @@ def smart_job_search(jobs_df, search_query, threshold=60):
     else:
         return pd.DataFrame(columns=jobs_df.columns)
 
-def ai_filter_jobs(jobs_df, user_target):
+def ai_filter_jobs(jobs_df, user_target, min_score=50):
     """
-    Real AI-powered job filtering using OpenAI GPT-4.1-nano (new API)
-    Returns filtered jobs based on semantic relevance to the user's target, with explanations
+    AI-powered job filtering with matching scores (0-100) using OpenAI GPT-4.1-nano
+    Analyzes job titles, descriptions, company, and location for comprehensive relevance scoring
     """
     if not user_target or user_target.strip() == "":
         return jobs_df
     
     import openai
+    import re
     client = openai.OpenAI(api_key=os.environ["OPENAI_API_KEY"])
     model = "gpt-4.1-nano"
-    filtered_jobs = []
+    scored_jobs = []
     
     # Live log placeholder
     log_placeholder = st.empty()
-    log_lines = ["🤖 AI is analyzing job titles for relevance..."]
+    log_lines = ["🤖 AI is analyzing job titles and descriptions with matching scores..."]
     
-    with st.spinner("🤖 AI is analyzing job titles for relevance..."):
+    with st.spinner("🤖 AI is analyzing job titles and descriptions for relevance..."):
         for idx, job in jobs_df.iterrows():
             job_title = str(job['title'])
-            prompt = (
-                f"A user is interested in jobs related to: '{user_target}'. "
-                f"Is the job title '{job_title}' relevant to this interest? "
-                f"Answer 'yes' or 'no', and briefly explain your reasoning in one sentence."
-            )
+            company = str(job.get('company', 'Unknown'))
+            location = str(job.get('location', 'Unknown'))
+            job_description = str(job.get('description', ''))
+            
+            # Truncate description if too long (to avoid token limits)
+            if len(job_description) > 2000:
+                job_description = job_description[:2000] + "..."
+            
+            # Enhanced prompt for comprehensive scoring
+            prompt = f"""
+You are an expert job matching AI. Analyze this job comprehensively for relevance to the user's interests.
+
+USER INTEREST: {user_target}
+
+JOB INFORMATION:
+- Title: {job_title}
+- Company: {company}
+- Location: {location}
+- Description: {job_description}
+
+Analyze the job description for:
+1. Required skills and technologies
+2. Job responsibilities and duties
+3. Experience level and qualifications
+4. Industry and domain focus
+5. Team and role context
+
+Provide a detailed analysis and score this job's relevance from 0-100, where:
+- 0-20: Completely irrelevant (e.g., retail manager for data scientist)
+- 21-40: Slightly relevant (e.g., business analyst for data scientist)
+- 41-60: Moderately relevant (e.g., data analyst for data scientist)
+- 61-80: Highly relevant (e.g., ML engineer for data scientist)
+- 81-100: Perfect match (e.g., data scientist for data scientist)
+
+Consider both the job title AND the detailed description content.
+
+Respond in this exact format:
+SCORE: [0-100]
+CONFIDENCE: [HIGH/MEDIUM/LOW]
+REASONING: [2-3 sentences explaining the score based on title and description analysis]
+
+Example:
+SCORE: 85
+CONFIDENCE: HIGH
+REASONING: This is a direct match for data science role. The title "Senior Data Scientist" and description mentioning "machine learning, Python, statistical analysis" directly align with the user's interest in data science positions.
+"""
+            
             try:
                 response = client.chat.completions.create(
                     model=model,
                     messages=[{"role": "user", "content": prompt}],
-                    max_tokens=50,
-                    temperature=0
+                    max_tokens=200,
+                    temperature=0.1
                 )
                 ai_response = response.choices[0].message.content.strip()
-                # Try to split into answer and explanation
-                if '-' in ai_response:
-                    answer, explanation = ai_response.split('-', 1)
-                elif ':' in ai_response:
-                    answer, explanation = ai_response.split(':', 1)
+                
+                # Parse the structured response
+                score_match = re.search(r'SCORE:\s*(\d+)', ai_response)
+                confidence_match = re.search(r'CONFIDENCE:\s*(HIGH|MEDIUM|LOW)', ai_response)
+                reasoning_match = re.search(r'REASONING:\s*(.+)', ai_response, re.DOTALL)
+                
+                if score_match and confidence_match and reasoning_match:
+                    score = int(score_match.group(1))
+                    confidence = confidence_match.group(1)
+                    reasoning = reasoning_match.group(1).strip()
+                    
+                    # Add score and metadata to job
+                    job_with_score = job.copy()
+                    job_with_score['ai_score'] = score
+                    job_with_score['ai_confidence'] = confidence
+                    job_with_score['ai_reasoning'] = reasoning
+                    
+                    # Color coding based on score
+                    if score >= 80:
+                        color = "limegreen"
+                        status = "PERFECT MATCH"
+                    elif score >= 60:
+                        color = "green"
+                        status = "HIGHLY RELEVANT"
+                    elif score >= 40:
+                        color = "orange"
+                        status = "MODERATELY RELEVANT"
+                    elif score >= 20:
+                        color = "yellow"
+                        status = "SLIGHTLY RELEVANT"
+                    else:
+                        color = "#ff6666"
+                        status = "NOT RELEVANT"
+                    
+                    log_lines.append(f"<span style='color:{color}'><b>{job_title}</b> — Score: <b>{score}/100</b> ({status})<br>Confidence: {confidence} | {reasoning}</span>")
+                    
+                    # Only keep jobs above minimum score
+                    if score >= min_score:
+                        scored_jobs.append(job_with_score)
                 else:
-                    answer, explanation = ai_response, ''
-                answer = answer.strip().lower()
-                explanation = explanation.strip()
-                if answer.startswith('yes'):
-                    filtered_jobs.append(job)
-                    log_lines.append(f"<span style='color:limegreen'>Job: <b>{job_title}</b> — AI: <b>yes</b> (KEPT)<br>Reason: {explanation}</span>")
-                else:
-                    log_lines.append(f"<span style='color:#ff6666'>Job: <b>{job_title}</b> — AI: <b>no</b> (FILTERED)<br>Reason: {explanation}</span>")
+                    # Fallback parsing if structured format fails
+                    log_lines.append(f"<span style='color:orange'>Job: <b>{job_title}</b> — AI parsing error, using fallback</span>")
+                    # Try to extract any number as score
+                    number_match = re.search(r'(\d+)', ai_response)
+                    if number_match:
+                        score = min(100, max(0, int(number_match.group(1))))
+                        job_with_score = job.copy()
+                        job_with_score['ai_score'] = score
+                        job_with_score['ai_confidence'] = 'LOW'
+                        job_with_score['ai_reasoning'] = 'Fallback parsing used'
+                        if score >= min_score:
+                            scored_jobs.append(job_with_score)
+                            
             except Exception as e:
-                log_lines.append(f"<span style='color:orange'>Job: <b>{job_title}</b> — AI error: {e}</span>")
+                log_lines.append(f"<span style='color:orange'>Job: <b>{job_title}</b> — AI error: {str(e)[:50]}...</span>")
                 continue
+            
             # Update the log live
             log_placeholder.markdown("<br>".join(log_lines), unsafe_allow_html=True)
     
     # Final log update
     log_placeholder.markdown("<br>".join(log_lines), unsafe_allow_html=True)
     
-    if filtered_jobs:
-        return pd.DataFrame(filtered_jobs).reset_index(drop=True)
+    if scored_jobs:
+        # Sort by score (highest first)
+        scored_df = pd.DataFrame(scored_jobs)
+        scored_df = scored_df.sort_values('ai_score', ascending=False).reset_index(drop=True)
+        
+        # Show summary statistics
+        avg_score = scored_df['ai_score'].mean()
+        high_score_count = len(scored_df[scored_df['ai_score'] >= 80])
+        st.success(f"🎯 AI Analysis Complete: {len(scored_df)} jobs kept (avg score: {avg_score:.1f}/100, {high_score_count} perfect matches)")
+        
+        return scored_df
     else:
         return pd.DataFrame(columns=jobs_df.columns)
 
@@ -384,15 +476,15 @@ def display_job_data_table(jobs_df, jobs_per_page=15):
         
         # Add AI-powered job filtering
         ai_target = st.text_input(
-            "🤖 AI Job Filter (Beta)", 
+            "🤖 AI Job Filter (Enhanced)", 
             placeholder="e.g., I want data science roles with Python and machine learning",
-            help="Describe your ideal job - AI will filter and rank jobs based on relevance to your target",
+            help="Describe your ideal job - AI will analyze job titles AND descriptions to filter and rank jobs based on relevance to your target",
             key="ai_target_input"
         )
         
         # AI Filter controls
         if ai_target and ai_target.strip():
-            ai_col1, ai_col2, ai_col3 = st.columns([1, 1, 4])
+            ai_col1, ai_col2, ai_col3, ai_col4 = st.columns([1, 1, 2, 2])
             with ai_col1:
                 if st.button("🤖 Apply AI Filter", key="apply_ai_filter"):
                     st.session_state.ai_filter_applied = True
@@ -403,6 +495,22 @@ def display_job_data_table(jobs_df, jobs_per_page=15):
                     st.session_state.ai_filter_applied = False
                     st.session_state.ai_target = ""
                     st.rerun()
+            with ai_col3:
+                min_score = st.slider(
+                    "Minimum Score", 
+                    min_value=0, 
+                    max_value=100, 
+                    value=50, 
+                    step=5,
+                    help="Only show jobs with AI relevance score above this threshold (0-100)"
+                )
+            with ai_col4:
+                st.markdown(f"**Score Guide:**")
+                st.markdown("• 80-100: Perfect match")
+                st.markdown("• 60-79: Highly relevant") 
+                st.markdown("• 40-59: Moderately relevant")
+                st.markdown("• 20-39: Slightly relevant")
+                st.markdown("• 0-19: Not relevant")
         
         filter_col1, filter_col2, filter_col3, filter_col4, filter_col5 = st.columns(5)
         
@@ -516,7 +624,7 @@ def display_job_data_table(jobs_df, jobs_per_page=15):
                 filtered_df = st.session_state['ai_filtered_jobs']
             else:
                 with st.spinner("🤖 AI is analyzing job titles for relevance..."):
-                    filtered_df = ai_filter_jobs(filtered_df, ai_target)
+                    filtered_df = ai_filter_jobs(filtered_df, ai_target, min_score)
                     st.session_state['ai_filtered_jobs'] = filtered_df
                     st.session_state['ai_cache_key'] = ai_cache_key
                 if len(filtered_df) == 0:
@@ -637,11 +745,19 @@ def display_job_data_table(jobs_df, jobs_per_page=15):
         """, unsafe_allow_html=True)
         
         # Display job table with sortable headers
-        cols = st.columns([4, 1.5, 2, 1.5, 2.5, 1])
+        # Check if AI filtering is active to show score columns
+        ai_active = st.session_state.get('ai_filter_applied', False)
         
-        # Sortable column headers
-        sort_columns = ['title', 'company', 'location', 'date_posted', 'min_amount', None]
-        column_names = ['Job Title', 'Company', 'Location', 'Date', 'Salary', 'JD']
+        if ai_active and 'ai_score' in filtered_df.columns:
+            # AI filtering is active - show score columns
+            cols = st.columns([3, 1.5, 1.5, 1.5, 1.5, 1.5, 1])
+            sort_columns = ['ai_score', 'title', 'company', 'location', 'date_posted', 'min_amount', None]
+            column_names = ['AI Score', 'Job Title', 'Company', 'Location', 'Date', 'Salary', 'JD']
+        else:
+            # Normal table without AI scores
+            cols = st.columns([4, 1.5, 2, 1.5, 2.5, 1])
+            sort_columns = ['title', 'company', 'location', 'date_posted', 'min_amount', None]
+            column_names = ['Job Title', 'Company', 'Location', 'Date', 'Salary', 'JD']
         
         for i, (col_name, sort_col) in enumerate(zip(column_names, sort_columns)):
             if sort_col:
@@ -663,14 +779,46 @@ def display_job_data_table(jobs_df, jobs_per_page=15):
         # Display each job row
         for idx, (_, job) in enumerate(page_data.iterrows()):
             st.markdown('<div class="job-row">', unsafe_allow_html=True)
-            cols = st.columns([4, 1.5, 2, 1.5, 2.5, 1])
-            cols[0].write(job['truncated_title'])
-            cols[1].write(job['company'])
-            cols[2].write(job['location'])
-            # Format date to show only the date part (YYYY-MM-DD)
-            date_str = pd.to_datetime(job['date_posted']).strftime('%Y-%m-%d') if pd.notna(job['date_posted']) else 'N/A'
-            cols[3].write(date_str)
-            cols[4].markdown(f"<span style='font-family: inherit;'>{job['formatted_salary']}</span>", unsafe_allow_html=True)
+            
+            if ai_active and 'ai_score' in job:
+                # AI filtering is active - show score columns
+                cols = st.columns([3, 1.5, 1.5, 1.5, 1.5, 1.5, 1])
+                
+                # AI Score column with color coding
+                score = job.get('ai_score', 0)
+                confidence = job.get('ai_confidence', 'LOW')
+                if score >= 80:
+                    score_color = "limegreen"
+                    score_emoji = "🎯"
+                elif score >= 60:
+                    score_color = "green"
+                    score_emoji = "✅"
+                elif score >= 40:
+                    score_color = "orange"
+                    score_emoji = "⚠️"
+                elif score >= 20:
+                    score_color = "yellow"
+                    score_emoji = "🤔"
+                else:
+                    score_color = "#ff6666"
+                    score_emoji = "❌"
+                
+                cols[0].markdown(f"<span style='color:{score_color}; font-weight:bold;'>{score_emoji} {score}/100</span><br><small>{confidence}</small>", unsafe_allow_html=True)
+                cols[1].write(job['truncated_title'])
+                cols[2].write(job['company'])
+                cols[3].write(job['location'])
+                date_str = pd.to_datetime(job['date_posted']).strftime('%Y-%m-%d') if pd.notna(job['date_posted']) else 'N/A'
+                cols[4].write(date_str)
+                cols[5].markdown(f"<span style='font-family: inherit;'>{job['formatted_salary']}</span>", unsafe_allow_html=True)
+            else:
+                # Normal table without AI scores
+                cols = st.columns([4, 1.5, 2, 1.5, 2.5, 1])
+                cols[0].write(job['truncated_title'])
+                cols[1].write(job['company'])
+                cols[2].write(job['location'])
+                date_str = pd.to_datetime(job['date_posted']).strftime('%Y-%m-%d') if pd.notna(job['date_posted']) else 'N/A'
+                cols[3].write(date_str)
+                cols[4].markdown(f"<span style='font-family: inherit;'>{job['formatted_salary']}</span>", unsafe_allow_html=True)
             
             # Check if this job is currently selected
             is_selected = (st.session_state.selected_job is not None and 
@@ -681,14 +829,15 @@ def display_job_data_table(jobs_df, jobs_per_page=15):
             # Style the button based on selection state
             if is_selected:
                 # Selected button - red background
-                if cols[5].button("View", key=f"view_{start_idx + idx}", type="primary"):
+                if cols[-1].button("View", key=f"view_{start_idx + idx}", type="primary"):
                     # If already selected, clicking again will close it
                     st.session_state.selected_job = None
                     st.rerun()
             else:
                 # Normal button
-                if cols[5].button("View", key=f"view_{start_idx + idx}"):
-                    st.session_state.selected_job = {
+                if cols[-1].button("View", key=f"view_{start_idx + idx}"):
+                    # Include AI data in selected job if available
+                    selected_job_data = {
                         'title': job['title'],
                         'company': job['company'],
                         'location': job['location'],
@@ -698,6 +847,14 @@ def display_job_data_table(jobs_df, jobs_per_page=15):
                         'description': job.get('description', 'No description available'),
                         'job_url': job.get('job_url_direct', None)
                     }
+                    
+                    # Add AI data if available
+                    if ai_active and 'ai_score' in job:
+                        selected_job_data['ai_score'] = job.get('ai_score', 0)
+                        selected_job_data['ai_confidence'] = job.get('ai_confidence', 'LOW')
+                        selected_job_data['ai_reasoning'] = job.get('ai_reasoning', 'No reasoning available')
+                    
+                    st.session_state.selected_job = selected_job_data
                     st.rerun()
             st.markdown('</div>', unsafe_allow_html=True)
         
@@ -752,6 +909,43 @@ def display_job_data_table(jobs_df, jobs_per_page=15):
             st.markdown("---")
             st.markdown(f"**{job['title']}**")
             st.markdown(f"🏢 **{job['company']}**")
+            
+            # Display AI score information if available
+            if 'ai_score' in job:
+                score = job['ai_score']
+                confidence = job['ai_confidence']
+                reasoning = job['ai_reasoning']
+                
+                # Color coding for score
+                if score >= 80:
+                    score_color = "limegreen"
+                    score_emoji = "🎯"
+                    score_label = "Perfect Match"
+                elif score >= 60:
+                    score_color = "green"
+                    score_emoji = "✅"
+                    score_label = "Highly Relevant"
+                elif score >= 40:
+                    score_color = "orange"
+                    score_emoji = "⚠️"
+                    score_label = "Moderately Relevant"
+                elif score >= 20:
+                    score_color = "yellow"
+                    score_emoji = "🤔"
+                    score_label = "Slightly Relevant"
+                else:
+                    score_color = "#ff6666"
+                    score_emoji = "❌"
+                    score_label = "Not Relevant"
+                
+                st.markdown("---")
+                st.markdown("### 🤖 AI Analysis")
+                st.markdown(f"<span style='color:{score_color}; font-size: 1.2em; font-weight: bold;'>{score_emoji} {score}/100 - {score_label}</span>", unsafe_allow_html=True)
+                st.markdown(f"**Confidence:** {confidence}")
+                st.markdown("**AI Reasoning:**")
+                st.markdown(f"*{reasoning}*")
+                st.markdown("---")
+            
             if job['job_url']:
                 st.markdown(f'<a href="{job["job_url"]}" target="_blank"><button style="background-color:#1f77b4;color:white;border:none;padding:10px 20px;border-radius:5px;cursor:pointer;width:100%;">🔗 Link to apply</button></a>', unsafe_allow_html=True)
             st.markdown('<p style="margin-top: 0.5rem; margin-bottom: 0.5rem; font-weight: bold;">📝 Job Description:</p>', unsafe_allow_html=True)
@@ -774,6 +968,7 @@ def display_job_data_table(jobs_df, jobs_per_page=15):
             - Use filters to narrow down results
             - Click Link to apply to go to the job page
             - Use pagination to browse all jobs
+            - Use AI Filter to get relevance scores
             """)
 
 # Main app
