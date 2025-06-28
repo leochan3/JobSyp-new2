@@ -129,9 +129,29 @@ class Indeed(Scraper):
                 f"responded with status code: {response.status_code} (submit GitHub issue if this appears to be a bug)"
             )
             return jobs, new_cursor
-        data = response.json()
-        jobs = data["data"]["jobSearch"]["results"]
-        new_cursor = data["data"]["jobSearch"]["pageInfo"]["nextCursor"]
+        
+        try:
+            data = response.json()
+        except Exception as e:
+            log.error(f"Failed to parse JSON response: {e}")
+            return jobs, new_cursor
+        
+        # Check if data is None or doesn't have expected structure
+        if not data or "data" not in data:
+            log.error(f"Invalid API response structure: {data}")
+            return jobs, new_cursor
+        
+        if not data["data"] or "jobSearch" not in data["data"]:
+            log.error(f"Missing jobSearch in API response: {data}")
+            return jobs, new_cursor
+        
+        job_search_data = data["data"]["jobSearch"]
+        if not job_search_data or "results" not in job_search_data:
+            log.error(f"Missing results in jobSearch: {job_search_data}")
+            return jobs, new_cursor
+        
+        jobs = job_search_data["results"]
+        new_cursor = job_search_data.get("pageInfo", {}).get("nextCursor")
 
         job_list = []
         for job in jobs:
